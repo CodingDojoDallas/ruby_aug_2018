@@ -1,4 +1,4 @@
-=begin
+
 
 # Write a program that would print all the numbers from 1 to 255.
 
@@ -6,7 +6,7 @@
 
 # Write a program that would print all the odd numbers from 1 to 255.
 
-puts (1..255).select { |i| i%2==0 }
+puts (1..255).select { |i| i%2==1 }
 
 # Write a program that would print the numbers from 0 to 255 but this time, it would also print the sum of the numbers that have been printed so far.
 

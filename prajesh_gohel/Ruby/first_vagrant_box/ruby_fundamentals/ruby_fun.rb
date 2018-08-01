@@ -140,7 +140,7 @@ puts (1..10).reject { |i| i % 3 == 0 }
 # .upto(limit) { |obj| block }
 puts 5.upto(10) { |i| print i, " " }
 
-=end
+
 
 # Blocks:
 
@@ -170,3 +170,10 @@ def square(num)
 end
 
 square(5) { |i| i*i }
+
+# Hashes:
+
+x = {"first_name" => "Coding", "last_name" => "Dojo"}
+print x["first_name"] , x["last_name"]
+p "Your last name is Dojo" if x["last_name"].eql? "Dojo"
+=end

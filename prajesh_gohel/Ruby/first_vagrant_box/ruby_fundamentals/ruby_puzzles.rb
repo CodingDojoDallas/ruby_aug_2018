@@ -1,4 +1,3 @@
-=begin
 
 # Create an array with the following values: 3,5,1,2,7,9,8,13,25,32. Print the sum of all numbers in the array. Also have the function return an array that only include numbers that are greater than 10 (e.g. when you pass the array above, it should return an array with the values of 13,25,32 - hint: use reject or find_all method)
 
@@ -35,7 +34,17 @@ y.sort!
 p y
 puts "Min: #{y.min}"
 puts "Max: #{y.max}"
-=end
+
 # Create a random string that is 5 characters long (hint: (65+rand(26)).chr returns a random character)
 
-puts (65+rand(26)).chr
+x = (1..5).collect { (65+rand(26)).chr }
+puts x.to_s
+
+# Generate an array with 10 random strings that are each 5 characters long
+
+arr = []
+x = (1..5).collect { (65+rand(26)).chr }
+5.times { |i| arr.push(x.to_s) }
+puts arr
+
+=end
