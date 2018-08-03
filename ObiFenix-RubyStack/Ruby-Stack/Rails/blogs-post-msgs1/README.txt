@@ -60,43 +60,49 @@ cd blog-post-messages1
     rail c
     Hirb.enable
 
-    blog1 = Blog.create(name:'Design & Coding in Python', description: 'Modern designs & dode patterns are placing Python where is at as one of the GO TO programming languages for data analysts, designers and developers.' )
-    blog1 = Blog.create(name:'Code Sinplicity', description: 'If you are looking for an expert who is writing about software development in a concrete and experienced way, check Max Kanat-Alexander work.' )
-    blog1 = Blog.create(name:'Java, SQL and JOOQ', description: 'Java, SQL and JOOQ is a content rich blog1 = blog full of tricks, tricks and best of the best coding practices.' )
-    blog1 = Blog.create(name:'Coding is a Must-Have Job Skill', description: 'Whether you’re a newly grad, a job seeker or a career switcher when you accidentally read these facts, you might ask yourself, “Is coding a must-learn skill?”' )
-    blog1 = Blog.create(name:'Coding Dojo', description: 'Coding Dojo was founded on the belief that anyone can learn to code.' )
+    Blog.create(name:'Design & Coding in Python', description: 'Modern designs & dode patterns are placing Python...' )
+    Blog.create(name:'Code Sinplicity', description: '1000 lines of code can be overated...' )
+    Blog.create(name:'Java, SQL and JOOQ', description: 'Java, SQL and JOOQ is a content rich blog1 = blog full of tricks, ...' )
+    Blog.create(name:'Coding is a Must-Have Job Skill', description: 'Whether you’re a newly grad, a job seeker or a career switcher...' )
+    Blog.create(name:'Coding Dojo', description: 'Coding Dojo was founded on the belief that anyone can learn to code.' )
 
     Blog.all
-    +----+---------------------------------+----------------------------------+-------------------------+-------------------------+
-    | id | name                            | description                      | created_at              | updated_at              |
-    +----+---------------------------------+----------------------------------+-------------------------+-------------------------+
-    | 1  | Design & Coding in Python       | Modern designs & dode pattern... | 2018-08-02 21:30:02 UTC | 2018-08-02 21:30:02 UTC |
-    | 2  | Code Sinplicity                 | If you are looking for an exp... | 2018-08-02 21:31:13 UTC | 2018-08-02 21:31:13 UTC |
-    | 3  | Java, SQL and JOOQ              | Java, SQL and JOOQ is a conte... | 2018-08-02 21:32:18 UTC | 2018-08-02 21:32:18 UTC |
-    | 4  | Coding is a Must-Have Job Skill | Whether you’re a newly grad, ... | 2018-08-02 21:34:39 UTC | 2018-08-02 21:34:39 UTC |
-    | 5  | Coding Dojo                     | Coding Dojo was founded on th... | 2018-08-02 21:40:45 UTC | 2018-08-02 21:40:45 UTC |
-    +----+---------------------------------+----------------------------------+-------------------------+-------------------------+
+    +----+----------------------------+----------------------------------+-------------------------+-------------------------+
+    | id | name                       | description                      | created_at              | updated_at              |
+    +----+----------------------------+----------------------------------+-------------------------+-------------------------+
+    | 1  | Design & Coding in Python  | Modern designs & dode pattern... | 2018-08-02 21:30:02 UTC | 2018-08-02 21:30:02 UTC |
+    | 2  | Code Sinplicity            | If you are looking for an exp... | 2018-08-02 21:31:13 UTC | 2018-08-02 21:31:13 UTC |
+    | 3  | Java, SQL and JOOQ         | Java, SQL and JOOQ is a conte... | 2018-08-02 21:32:18 UTC | 2018-08-02 21:32:18 UTC |
+    | 4  | Coding is a Must-Have Job  | Whether you’re a newly grad, ... | 2018-08-02 21:34:39 UTC | 2018-08-02 21:34:39 UTC |
+    | 5  | Coding Dojo                | Coding Dojo was founded on th... | 2018-08-02 21:40:45 UTC | 2018-08-02 21:40:45 UTC |
+    +----+----------------------------+----------------------------------+-------------------------+-------------------------+
 
 
 ===========================================
 [ #2 ]:   Create several post for each blog
 ===========================================
-Post.create(blog: Blog.first, title: "Python? Do not think so', content:'I rather Javascript for web development")
-Post.create(blog: Blog.first, title: "Python? I do not thinks so!", content:"I personally do not like this language. I am aware that there is a big community of supporters. But I prefer c# at any time when it comes down to web development.")Dojo.create(name: "CodingDojo New York", city: "New York", state: "NY")
-Post.create(blog: Blog.first, title: 'Python? Previous post reviewers wondered.', content:'Well! Python is a high-level, interpreted and general-purpose dynamic programming language that focuses on code readability. The syntax in Python helps the programmers to do coding in fewer steps as compared to other languages.')
+Post.create(
+    blog: Blog.first,
+    title: "Python? Do not think so', content:'I rather Javascript for web development")
+Post.create(
+    blog: Blog.first,
+    title: "Python??", content:"I personally prefer c# when it comes down to web development.")
+Post.create(
+    blog: Blog.first,
+    title: 'Love Python!', content:'Python is a high-level, interpreted and general-purpose dynamic programming language...'
 ... etc.
 
 Post.all
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| id | blog_id | title                       | content                    | created_at              | updated_at              |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| 1  | 1       | Python? Do not think so     | I rather Javascript for... | 2018-08-02 23:32:39 UTC | 2018-08-02 23:32:39 UTC |
-| 2  | 1       | Python? I do not thinks so! | I personally do not lik... | 2018-08-02 23:35:23 UTC | 2018-08-02 23:35:23 UTC |
-| 3  | 1       | Python? Previous post re... | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
-| 5  | 2       | Code Simplicity is the e... | Understanding Software ... | 2018-08-02 23:49:18 UTC | 2018-08-02 23:49:18 UTC |
-| 6  | 2       | Code Symplicity...? is a... | There’s a lot to know a... | 2018-08-02 23:54:48 UTC | 2018-08-02 23:54:48 UTC |
-| 7  | 3       | Why JavaScript              | JavaScript is eating th... | 2018-08-03 00:07:54 UTC | 2018-08-03 00:07:54 UTC |
-| 8  | 5       | Is really Javascript or ... | JavaScript is a modern ... | 2018-08-03 00:13:01 UTC | 2018-08-03 00:15:54 UTC |
++----+---------+-----------------+----------------------------+-------------------------+-------------------------+
+| id | blog_id | title           | content                    | created_at              | updated_at              |
++----+---------+-----------------+----------------------------+-------------------------+-------------------------+
+| 1  | 1       | Why Python?     | I rather Javascript for... | 2018-08-02 23:32:39 UTC | 2018-08-02 23:32:39 UTC |
+| 2  | 1       | Python??        | I personally do not lik... | 2018-08-02 23:35:23 UTC | 2018-08-02 23:35:23 UTC |
+| 3  | 1       | Python???       | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
+| 5  | 2       | Code Simplicity | Understanding Software ... | 2018-08-02 23:49:18 UTC | 2018-08-02 23:49:18 UTC |
+| 6  | 2       | Code Symplicity | There’s a lot to know a... | 2018-08-02 23:54:48 UTC | 2018-08-02 23:54:48 UTC |
+| 7  | 3       | Why JavaScript  | JavaScript is eating th... | 2018-08-03 00:07:54 UTC | 2018-08-03 00:07:54 UTC |
+| 8  | 5       | Why Javascript  | JavaScript is a modern ... | 2018-08-03 00:13:01 UTC | 2018-08-03 00:15:54 UTC |
 +----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
 7 rows in set
 
@@ -104,9 +110,15 @@ Post.all
 ===============================================
 [ #3 ]:   Create several messages for each post
 ===============================================
-Message.create(post: Post.first, author: "Juan Antonio", message:"I love your post. I myself planning to take some Python classes. Is there any tools you'd recommend me?")
-Message.create(post: Post.first, author: "Jorge", message:"I love the post. Very informative!")
-Message.create(post: Post.first, author: "James", message:"I am currently working with adruinos. I am trying to send metadata to my mycrocontroller. Do you think Python would ne the best way to go?")
+Message.create(
+    post: Post.first, author: "Juan Antonio",
+    message:"I love your post. I myself planning to take some Python classes. Is there any tools you'd recommend me?")
+Message.create(
+    post: Post.first, author: "Jorge",
+    message:"I love the post. Very informative!")
+Message.create(
+    post: Post.first, author: "James",
+    message:"I am currently working with adruinos. Do you think Python would ne the best way to go?"
 ... etc.
 
 
@@ -115,13 +127,13 @@ Message.create(post: Post.first, author: "James", message:"I am currently workin
 ================================================
 
 Blog.first.posts
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| id | blog_id | title                       | content                    | created_at              | updated_at              |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| 1  | 1       | Python? Do not think so     | I rather Javascript for... | 2018-08-02 23:32:39 UTC | 2018-08-02 23:32:39 UTC |
-| 2  | 1       | Python? I do not thinks so! | I personally do not lik... | 2018-08-02 23:35:23 UTC | 2018-08-02 23:35:23 UTC |
-| 3  | 1       | Python? Previous post re... | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
++----+---------+--------------+----------------------------+-------------------------+-------------------------+
+| id | blog_id | title        | content                    | created_at              | updated_at              |
++----+---------+--------------+----------------------------+-------------------------+-------------------------+
+| 1  | 1       | Why Python?  | I rather Javascript for... | 2018-08-02 23:32:39 UTC | 2018-08-02 23:32:39 UTC |
+| 2  | 1       | Python??     | I personally do not lik... | 2018-08-02 23:35:23 UTC | 2018-08-02 23:35:23 UTC |
+| 3  | 1       | Python???    | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
++----+---------+--------------+----------------------------+-------------------------+-------------------------+
 3 rows in set
 
 
@@ -130,13 +142,13 @@ Blog.first.posts
 ================================================
 
 Blog.last.posts.order("title DESC")
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| id | blog_id | title                       | content                    | created_at              | updated_at              |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| 8  | 5       | Is really Javascript or ... | JavaScript is a modern ... | 2018-08-03 00:13:01 UTC | 2018-08-03 00:15:54 UTC |
-| 9  | 5       | Coding Dojo? Perhaps not... | It is probably one of t... | 2018-08-03 00:50:43 UTC | 2018-08-03 00:50:43 UTC |
-| 10 | 5       | Best Bootcamp Indeed!       | I had a very stressful ... | 2018-08-03 00:55:45 UTC | 2018-08-03 00:55:45 UTC |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
++----+---------+-----------------+---------------------------+-------------------------+-------------------------+
+| id | blog_id | title           | content                   | created_at              | updated_at              |
++----+---------+-----------------+---------------------------+-------------------------+-------------------------+
+| 8  | 5       | Why Javascript? | JavaScript is a modern... | 2018-08-03 00:13:01 UTC | 2018-08-03 00:15:54 UTC |
+| 9  | 5       | Coding Dojo     | It is probably one of...  | 2018-08-03 00:50:43 UTC | 2018-08-03 00:50:43 UTC |
+| 10 | 5       | Best Bootcamp   | I had a very stressful... | 2018-08-03 00:55:45 UTC | 2018-08-03 00:55:45 UTC |
++----+---------+-----------------+---------------------------+-------------------------+-------------------------+
 3 rows in set
 
 
@@ -146,19 +158,19 @@ Blog.last.posts.order("title DESC")
 
 Post.first.update(title:  "Python?")
 
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| id | blog_id | title                       | content                    | created_at              | updated_at              |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-| 1  | 1       | Python?                     | I rather Javascript for... | 2018-08-02 23:32:39 UTC | 2018-08-03 01:13:25 UTC |
-| 2  | 1       | Python? I do not thinks so! | I personally do not lik... | 2018-08-02 23:35:23 UTC | 2018-08-02 23:35:23 UTC |
-| 3  | 1       | Python? Previous post re... | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
-| 5  | 2       | Code Simplicity is the e... | Understanding Software ... | 2018-08-02 23:49:18 UTC | 2018-08-02 23:49:18 UTC |
-| 6  | 2       | Code Symplicity...? is a... | There’s a lot to know a... | 2018-08-02 23:54:48 UTC | 2018-08-02 23:54:48 UTC |
-| 7  | 3       | Why JavaScript              | JavaScript is eating th... | 2018-08-03 00:07:54 UTC | 2018-08-03 00:07:54 UTC |
-| 8  | 5       | Is really Javascript or ... | JavaScript is a modern ... | 2018-08-03 00:13:01 UTC | 2018-08-03 00:15:54 UTC |
-| 9  | 5       | Coding Dojo? Perhaps not... | It is probably one of t... | 2018-08-03 00:50:43 UTC | 2018-08-03 00:50:43 UTC |
-| 10 | 5       | Best Bootcamp Indeed!       | I had a very stressful ... | 2018-08-03 00:55:45 UTC | 2018-08-03 00:55:45 UTC |
-+----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
++----+---------+-----------------+----------------------------+-------------------------+-------------------------+
+| id | blog_id | title           | content                    | created_at              | updated_at              |
++----+---------+-----------------+----------------------------+-------------------------+-------------------------+
+| 1  | 1       | Why Python?     | I rather Javascript for... | 2018-08-02 23:32:39 UTC | 2018-08-03 01:13:25 UTC |
+| 2  | 1       | Python??        | I personally do not lik... | 2018-08-02 23:35:23 UTC | 2018-08-02 23:35:23 UTC |
+| 3  | 1       | Python???       | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
+| 5  | 2       | Code Simplicity | Understanding Software ... | 2018-08-02 23:49:18 UTC | 2018-08-02 23:49:18 UTC |
+| 6  | 2       | Code Symplicity | There’s a lot to know a... | 2018-08-02 23:54:48 UTC | 2018-08-02 23:54:48 UTC |
+| 7  | 3       | Why JavaScript  | JavaScript is eating th... | 2018-08-03 00:07:54 UTC | 2018-08-03 00:07:54 UTC |
+| 8  | 5       | Why Javascript  | JavaScript is a modern ... | 2018-08-03 00:13:01 UTC | 2018-08-03 00:15:54 UTC |
+| 9  | 5       | Coding Dojo?    | It is probably one of t... | 2018-08-03 00:50:43 UTC | 2018-08-03 00:50:43 UTC |
+| 10 | 5       | Best Bootcamp   | I had a very stressful ... | 2018-08-03 00:55:45 UTC | 2018-08-03 00:55:45 UTC |
++----+---------+-----------------+----------------------------+-------------------------+-------------------------+
 9 rows in set
 
 
@@ -172,11 +184,11 @@ Post.first.update(title:  "Python?")
 
     Post Load (4.0ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1 OFFSET 2
     SQL (8.1ms)  DELETE FROM "posts" WHERE "posts"."id" = ?  [["id", 3]]
-    +----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-    | id | blog_id | title                       | content                    | created_at              | updated_at              |
-    +----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
-    | 3  | 1       | Python? Previous post re... | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
-    +----+---------+-----------------------------+----------------------------+-------------------------+-------------------------+
+    +----+---------+-------------+----------------------------+-------------------------+-------------------------+
+    | id | blog_id | title       | content                    | created_at              | updated_at              |
+    +----+---------+-------------+----------------------------+-------------------------+-------------------------+
+    | 3  | 1       | Why Python? | Well! Python is a high-... | 2018-08-02 23:38:07 UTC | 2018-08-02 23:38:07 UTC |
+    +----+---------+-------------+----------------------------+-------------------------+-------------------------+
     1 row in set
 
 
@@ -189,14 +201,14 @@ Blog.all
 
 2.3.1 :033 > Blog.all
   Blog Load (2.6ms)  SELECT "blogs".* FROM "blogs"
-+----+---------------------------+----------------------------------------+-------------------------+-------------------------+
-| id | name                      | description                            | created_at              | updated_at              |
-+----+---------------------------+----------------------------------------+-------------------------+-------------------------+
-| 1  | Design & Coding in Python | Modern designs & dode patterns are ... | 2018-08-02 23:20:28 UTC | 2018-08-02 23:20:28 UTC |
-| 2  | Code Sinplicity           | If you are looking for an expert wh... | 2018-08-02 23:21:09 UTC | 2018-08-02 23:21:09 UTC |
-| 3  | Java, SQL and JOOQ        | Java, SQL and JOOQ is a content ric... | 2018-08-02 23:21:21 UTC | 2018-08-02 23:21:21 UTC |
-| 5  | Coding Dojo               | Coding Dojo was founded on the beli... | 2018-08-02 23:21:45 UTC | 2018-08-02 23:21:45 UTC |
-+----+---------------------------+----------------------------------------+-------------------------+-------------------------+
++----+--------------------+--------------------------------------+-------------------------+-------------------------+
+| id | name               | description                          | created_at              | updated_at              |
++----+--------------------+--------------------------------------+-------------------------+-------------------------+
+| 1  | Design & Coding in | Modern designs & dode patterns...    | 2018-08-02 23:20:28 UTC | 2018-08-02 23:20:28 UTC |
+| 2  | Code Sinplicity    | Understanding Software has become... | 2018-08-02 23:21:09 UTC | 2018-08-02 23:21:09 UTC |
+| 3  | Java, SQL and JOOQ | Java, SQL and JOOQ is a content...   | 2018-08-02 23:21:21 UTC | 2018-08-02 23:21:21 UTC |
+| 5  | Coding Dojo        | Coding Dojo...                       | 2018-08-02 23:21:45 UTC | 2018-08-02 23:21:45 UTC |
++----+--------------------+--------------------------------------+-------------------------+-------------------------+
 4 rows in set
 
 
@@ -206,11 +218,11 @@ Blog.all
 
 2.3.1 :035 > Blog.where("id < ?", 5)
   Blog Load (2.6ms)  SELECT "blogs".* FROM "blogs" WHERE (id < 5)
-+----+---------------------------+----------------------------------------+-------------------------+-------------------------+
-| id | name                      | description                            | created_at              | updated_at              |
-+----+---------------------------+----------------------------------------+-------------------------+-------------------------+
-| 1  | Design & Coding in Python | Modern designs & dode patterns are ... | 2018-08-02 23:20:28 UTC | 2018-08-02 23:20:28 UTC |
-| 2  | Code Sinplicity           | If you are looking for an expert wh... | 2018-08-02 23:21:09 UTC | 2018-08-02 23:21:09 UTC |
-| 3  | Java, SQL and JOOQ        | Java, SQL and JOOQ is a content ric... | 2018-08-02 23:21:21 UTC | 2018-08-02 23:21:21 UTC |
-+----+---------------------------+----------------------------------------+-------------------------+-------------------------+
++----+--------------------+----------------------------------------+-------------------------+-------------------------+
+| id | name               | description                            | created_at              | updated_at              |
++----+--------------------+----------------------------------------+-------------------------+-------------------------+
+| 1  | Design & Coding    | Modern designs & dode patterns are ... | 2018-08-02 23:20:28 UTC | 2018-08-02 23:20:28 UTC |
+| 2  | Code Sinplicity    | Understanding Software has become...   | 2018-08-02 23:21:09 UTC | 2018-08-02 23:21:09 UTC |
+| 3  | Java, SQL and JOOQ | Java, SQL and JOOQ is a content ric... | 2018-08-02 23:21:21 UTC | 2018-08-02 23:21:21 UTC |
++----+--------------------+----------------------------------------+-------------------------+-------------------------+
 3 rows in set
