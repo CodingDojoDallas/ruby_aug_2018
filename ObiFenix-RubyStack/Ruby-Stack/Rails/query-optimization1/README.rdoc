@@ -167,8 +167,16 @@ players = Player.includes(:team).where("teams.stadium = 'Staples Center'").refer
           name with the letter 'Z' by using .includes and .joins
 ==================================================================
 
-players = Player.includes(:team).where("teams.stadium = 'Staples Center'").references(":team")
+Player.joins(:team).where("players.name like 'z%'")
 
-
-
-
++-----+---------------+---------+-------------------------+-------------------------+
+| id  | name          | team_id | created_at              | updated_at              |
++-----+---------------+---------+-------------------------+-------------------------+
+| 84  | Zach LaVine   | 5       | 2018-08-03 02:12:54 UTC | 2018-08-03 02:12:54 UTC |
+| 160 | Zaza Pachulia | 9       | 2018-08-03 02:12:55 UTC | 2018-08-03 02:12:55 UTC |
+| 198 | Zhou Qi       | 11      | 2018-08-03 02:12:56 UTC | 2018-08-03 02:12:56 UTC |
+| 430 | Zhaire Smith  | 23      | 2018-08-03 02:12:59 UTC | 2018-08-03 02:12:59 UTC |
+| 452 | Zach Collins  | 25      | 2018-08-03 02:13:00 UTC | 2018-08-03 02:13:00 UTC |
+| 482 | Zach Randolph | 26      | 2018-08-03 02:13:00 UTC | 2018-08-03 02:13:00 UTC |
++-----+---------------+---------+-------------------------+-------------------------+
+6 rows in set
