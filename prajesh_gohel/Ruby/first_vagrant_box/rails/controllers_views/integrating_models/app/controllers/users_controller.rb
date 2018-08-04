@@ -16,7 +16,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(name: post.method('name'))
+    User.create(name: params[:name])
     redirect_to "/users"
+  end
+
+  def total
+    render text: "Total amount of users: #{User.all.count}"
   end
 end

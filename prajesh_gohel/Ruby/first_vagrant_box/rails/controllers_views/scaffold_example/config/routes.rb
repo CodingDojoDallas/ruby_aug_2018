@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/total' => 'users#total'
   resources :users
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
