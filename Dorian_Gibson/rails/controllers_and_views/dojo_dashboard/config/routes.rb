@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  # get 'dojos' => 'dojos#index'
-
+  root 'dojos#root'
   resources :dojos
 
 end
