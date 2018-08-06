@@ -25,7 +25,7 @@ class SayController < ApplicationController
   end
 
   def reset
-    session[:count] =nil
+    session.clear
     render text: 'Destroyed the session!'
   end
 end
