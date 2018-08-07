@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="container">
+<h1><strong><%= @dojo.branch %><strong></h1>
+<h3><strong>Address:</strong><%= @dojo.street %></h3>
+<h3><strong>City:</strong><%= @dojo.city %></h3>
+<h3><strong>State:</strong><%= @dojo.state %></h3>
+<a href="/">Home</a>
+<a href="/dojos/<%= @dojo.id %>/edit">Edit</a>
+</div>
