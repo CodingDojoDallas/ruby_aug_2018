@@ -1,0 +1,16 @@
+<h1>New Dojo</h1>
+<% if flash[:notice] %>
+  <% flash[:notice].each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+<form action="/dojos" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="dojo[branch]" placeholder="Branch">
+    <input type="text" name="dojo[street]" placeholder="Street">
+    <input type="text" name="dojo[city]" placeholder="City">
+    <input type="text" name="dojo[state]" placeholder="State">
+    <input type="submit" value="Create">
+</form>
+
+<a href="/dojos">Home</a>
