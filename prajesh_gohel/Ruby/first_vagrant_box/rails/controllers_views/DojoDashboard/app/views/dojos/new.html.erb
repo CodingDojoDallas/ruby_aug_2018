@@ -1,5 +1,9 @@
 <h1>New Dojo</h1>
-
+<% if flash[:notice] %>
+  <% for message in flash[:notice] %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
 <form action="/dojos" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="text" name="dojo[branch]" placeholder="Branch">

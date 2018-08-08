@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/hello' => 'hello#index'
   get '/times/restart' => "times#destroy"
   get '/say/hello/:name' => "say#show"
   root 'say#index'

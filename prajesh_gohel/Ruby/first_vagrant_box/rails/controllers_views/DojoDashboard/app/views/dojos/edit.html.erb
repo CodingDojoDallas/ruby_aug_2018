@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <% for message in flash[:notice] %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
 <h1> Editing <%= @dojo.city %>
 
 <form action="/dojos/<%= @dojo.id %>" method="post">
@@ -10,5 +15,5 @@
     <input type="submit" value="Update">
 </form>
 
-<a href="/dojos">Home &#8739 </a>
-<a href="/dojos/<%= @dojo.id %>">Show &#8739 </a>
+<a href="/dojos">Home &#8739; </a>
+<a href="/dojos/<%= @dojo.id %>">Show &#8739; </a>

@@ -1,14 +1,21 @@
 class DojosController < ApplicationController
 
   def index
-    puts "goodbye"
-    puts "yo"
     @dojo = Dojo.all
+    # render 'dojos/new'
+  end
+
+  def new
   end
 
   def create
-    Dojo.create(dojo_params)
-    redirect_to "/dojos"
+    @new_dojo = Dojo.create(dojo_params)
+    unless @new_dojo.valid?
+      flash[:notice] = @new_dojo.errors.full_messages
+      redirect_to "/dojos/new"
+    else
+      redirect_to "/dojos"
+    end
   end
 
   def edit
@@ -17,12 +24,21 @@ class DojosController < ApplicationController
 
   def show
     @dojo = Dojo.find(params[:id])
+    @students = Dojo.find(params[:id]).students
   end
 
   def update
+    puts "Updating..."
     @dojo = Dojo.find(params[:id])
     @dojo.update(dojo_params)
-    redirect_to "/dojos/#{params[:id]}"
+    unless @dojo.valid?
+      puts "Error detected"
+      flash[:notice] = @dojo.errors.full_messages
+      redirect_to "/dojos/#{params[:id]}/edit"
+    else
+      puts "redirecting to dojos/#{params[:id]}"
+      redirect_to "/dojos/" + params[:id].to_s
+    end
   end
 
   def destroy
