@@ -9,9 +9,9 @@ class DojosController < ApplicationController
   end
 
   def create
-    @new_dojo = Dojo.create(dojo_params)
-    unless @new_dojo.valid?
-      flash[:notice] = @new_dojo.errors.full_messages
+    new_dojo = Dojo.create(dojo_params)
+    unless new_dojo.valid?
+      flash[:notice] = new_dojo.errors.full_messages
       redirect_to "/dojos/new"
     else
       redirect_to "/dojos"
