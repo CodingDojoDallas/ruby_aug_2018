@@ -1,0 +1,13 @@
+<div class='col'>
+    <h1>New User</h1>
+    <form class="form-signin" action="/users" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="text" name="first_name" class="form-control" placeholder="First Name" >
+        <input type="text" name="last_name" class="form-control" placeholder="Last Name" >
+        <div class="wrapper">
+            <span class="group-btn  col-lg-6">     
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Submit</button>
+            </span>
+        </div>
+    </form>
+</div>
