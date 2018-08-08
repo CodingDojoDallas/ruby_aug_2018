@@ -1,0 +1,39 @@
+// Navbar section
+nav {
+    background-color:#000;
+    padding: 0 4rem;
+    a:hover { color: tan;  }
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    // position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://cdn-images-1.medium.com/max/1600/0*zfW13Mn8_fvEKcU7.jpg')
+}
+
+// Container section
+.container { height: 70%; width: 70%; background-color: #171414e3; color: #f5f5f5; padding: 4rem 2rem; }
+.container h1 { margin-top: 2rem; }
+
+// Form Components [ Add and Edit ] Section
+form { padding: 0 15rem; }
+ul .form-row { padding-left: 4rem !important; }
+.form-row { line-height: 0rem; }
+
+.flxend { display: flex; justify-content: end; }                                // div container requiring flex
+.flexed { display: flex; justify-content: space-between; }                      // div container requiring flex
+.grided { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 2rem; }      // div container requiring grid
+.inline { display: inline-block; margin: 1rem auto; }                           // div container requiring grid
+.grided input { min-width: 100%; margin-top: 2rem; }
+.btn    { background-color: teal }
+.btn:hover { background-color: #f5f5f5 !important; color: teal; }
+.text-warning { color: #fba153fa; }
+.sn:hover { background-color: #222 !important; }
+
+.brand-logo {
+    font-family: 'Days One', sans-serif;
+}
