@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form class="" action="/submit/" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <h1>Survey</h1>
+
+                <label>Your Name:</label>
+                <input class="form-control" name="name">
+
+                <label>Dojo Location:</label>
+                <select class="form-control" name="location">
+                    <option>San Jose</option>
+                    <option>Dallas</option>                 
+                    <option>Charleston</option>
+                    <option>Bossier City</option>
+                    <option>Ft. Worth</option>
+                </select>
+
+                <label>Favorite Language:</label>
+                    <select class="form-control" name="lang">
+                    <option>Python</option>
+                    <option>Java</option>               
+                    <option>Ruby</option>
+                    <option>C++</option>
+                </select>
+
+                <label>Comment (optional):</label>
+                <textarea class="form-control" name="comment" rows="3"></textarea>
+
+                <button type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
