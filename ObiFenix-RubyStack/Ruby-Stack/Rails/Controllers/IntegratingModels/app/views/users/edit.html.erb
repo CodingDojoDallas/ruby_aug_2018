@@ -9,7 +9,7 @@
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <div class="row">
                 <div class="input-field col s10">
-                    <input placeholder="Entere User Name" id="name" name="name" type="text" class="validate white-text"  value="<%=@user.name%>">
+                    <input placeholder="Entere User Name" id="name" name="user[name]" type="text" class="validate white-text"  value="<%=@user.name%>">
                     <label for="name">Full Name</label>
                 </div>
             </div>

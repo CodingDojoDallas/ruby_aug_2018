@@ -1,0 +1,71 @@
+
+* {
+    margin: 0px;
+    padding: 0px; }
+
+body{
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+    font-family: 'Montserrat', sans-serif; }
+
+h3 {
+    font-family: 'Fredoka One', cursive;
+    color: rgb(255,190,59);
+    text-align: center;
+}
+
+h4 {
+  margin-top: 1rem;
+}
+.timer { margin-left: 2rem; color: silver; }
+.brand-logo { color: #d8cab8cc; font-family: 'Fredoka One', cursive; }
+.brand-logo span {  color: #f5f5f5 !important; }
+.brand-logo span:hover { color: #e6be8ad4 !important;  }
+
+.activities { color: rgb(255,190,59); }
+
+.red { color: red; }
+
+.score-img { width: 60px; height: 60px; }
+
+img{
+    width: 250px;
+    height: 190px;
+    position: center; }
+
+.anyClass {
+  height:150px;
+  overflow-y: scroll; }
+
+.btn {
+    float: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.mybtn {
+    width: 100px;
+    float: right;
+    margin-top: -2.5rem;
+}
+
+form, h4.activities {
+    display: block;
+    text-align: center;
+}
+
+@media (max-width: 1199px) {
+    .col-md-3 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        min-width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .col-md-3 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        min-width: 100%;
+    }
+}

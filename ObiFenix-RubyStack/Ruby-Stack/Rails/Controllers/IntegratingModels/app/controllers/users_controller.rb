@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(name: params[:name])
+        @user = User.create(user_params)
         redirect_to "/users"
     end
 
@@ -35,12 +35,17 @@ class UsersController < ApplicationController
         end
     end
 
+    # def destroy
+    #     @user.destroy
+    #     redirect_to "/users"
+    # end
+
     def total
         render text: "Total number of users: #{ User.count }"
     end
 
     private
     def user_params
-        params.permit(:id, :name, :created_at, :updated_at)
+        params.require(:user).permit(:id, :name, :created_at, :updated_at)
     end
 end
