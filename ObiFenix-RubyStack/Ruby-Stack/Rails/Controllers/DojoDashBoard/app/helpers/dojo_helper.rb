@@ -1,0 +1,2 @@
+module DojoHelper
+end

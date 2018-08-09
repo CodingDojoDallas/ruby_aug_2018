@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Listing <span class="white-text"><%= @alldojos.count %></span> Dojos</h1>
+
+    <table class="highlight">
+        <thead>
+        <tr>
+            <th class="theader">Coding Dojo Branch</th>
+            <th class="theader">Street</th>
+            <th class="theader">City</th>
+            <th class="theader">State</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @alldojos.each do |dojo| %>
+        <tr>
+            <td class="tdbody"><%= dojo.branch %></td>
+            <td class="tdbody"><%= dojo.street %></td>
+            <td class="tdbody"><%= dojo.city   %></td>
+            <td class="tdbody"><%= dojo.state  %></td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+</div>

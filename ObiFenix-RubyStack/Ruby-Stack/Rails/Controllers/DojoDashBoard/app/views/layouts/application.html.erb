@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DojoDashBoard</title>
+
+    <!-- Required CSS Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Montserrat|Open+Sans|Poiret+One">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Required JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="fixed dark">
+      <div class="nav-wrapper">
+        <a href="/"><img src="/assets/codingdojo.png"</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <!--<li><a href="/users/new">Add New User</a></li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+  </body>
+</html>
