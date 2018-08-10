@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get '/hello' => 'hello#index'
-  get '/times/restart' => "times#destroy"
-  get '/say/hello/:name' => "say#show"
-  root 'say#index'
-
-  resources :hello
-  resources :say
-  resources :times
+  get '/messages' => 'messages#index'
+  post '/users' => 'users#verify'
+  get '/users/new'
+  post '/messages' => 'messages#create'
+  get '/users/logout' => 'users#logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

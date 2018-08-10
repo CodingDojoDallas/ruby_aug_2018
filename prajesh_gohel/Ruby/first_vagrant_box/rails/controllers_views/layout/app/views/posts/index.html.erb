@@ -1,0 +1,53 @@
+<% content_for :left_column do %>
+  <h1>All Posts</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.user.first_name %> <%= post.user.last_name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<% content_for :middle_column do %>
+  <% if flash[:notice] %>
+    <% flash[:notice].each do |message| %>
+      <p class="alert alert-danger"><%= message %></p>
+    <% end %>
+  <% end %>
+  <h1>New Post</h1>
+  <form action="/posts" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name="post[title]" id="title" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="col" name="post[content]" rows="4" id="content"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <select name="post[user_id]" id="author" class="form-control">
+        <% @all_users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
+        <% end %>
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+<% end %>
+<% content_for :right_column do %>
+  <h1>Go to Users Page</h1>
+  <a href="/" class="btn btn-secondary text-white">All Users</a>
+<% end %>

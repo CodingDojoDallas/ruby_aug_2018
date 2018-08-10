@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-  get '/hello' => 'hello#index'
-  get '/times/restart' => "times#destroy"
-  get '/say/hello/:name' => "say#show"
-  root 'say#index'
-
-  resources :hello
-  resources :say
-  resources :times
+  get '/dojos' => 'dojos#index'
+  get '/dojos/new' => 'dojos#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
