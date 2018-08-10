@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
   layout 'main_page'
   def index
+    unless session[:username]
+      flash[:danger] = "You must sign in first"
+      redirect_to users_new_path
+    end
     @user = User.where("username = ?", session[:username])
     @messages = Message.all
   end

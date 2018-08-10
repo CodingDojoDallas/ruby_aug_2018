@@ -1,0 +1,17 @@
+~~~ In our Gemfile ~~~
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+end
+
+~~~ In our Rails Helper ~~~
+require 'spec_helper'
+require 'rspec/rails'
+
+RSpec.configure do |config|
+  # Includes Factory Girl into our testing environment
+  config.include FactoryGirl::Syntax::Methods
+
+  ...
+end

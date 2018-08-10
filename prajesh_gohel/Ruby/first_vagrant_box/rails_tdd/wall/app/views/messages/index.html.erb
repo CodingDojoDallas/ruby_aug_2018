@@ -8,14 +8,14 @@
   <% end %>
 <% end %>
 <h1>Post a Message</h1>
-<form action="/messages" method="post">
+<form class="col-6" action="/messages" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <textarea name="message" rows="4"></textarea></br></br>
-  <button type="submit">Create</button>
+  <textarea class="form-control" name="message" rows="4"></textarea>
+  <button class="btn btn-success mt-3" type="submit">Create</button>
 </form>
 </br></br>
 <div>
   <% @messages.reverse.each do |message| %>
-        <h2><%= message.user.first_name %> <%= message.user.last_name %> - <%= message.created_at.strftime('%B %d, %Y %I:%M %p') %></h2>
-        <p><%= message.message %></p>
+        <h4><%= message.user.first_name %> <%= message.user.last_name %> - <%= message.created_at.strftime('%B %d, %Y %I:%M %p') %></h4>
+        <p><%= message.message %></p><br>
   <% end %>

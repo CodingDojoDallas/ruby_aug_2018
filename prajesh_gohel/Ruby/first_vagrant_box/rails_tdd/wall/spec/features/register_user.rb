@@ -21,4 +21,10 @@ feature "User signs in" do
     expect(page).to have_content "Username not found"
     expect(page).to have_current_path(users_new_path)
   end
+
+  scenario "user attempts to go directly into messages_path" do
+    visit messages_path
+    expect(current_path).to eq(users_new_path)
+    expect(page).to have_content "You must sign in first"
+  end
 end
