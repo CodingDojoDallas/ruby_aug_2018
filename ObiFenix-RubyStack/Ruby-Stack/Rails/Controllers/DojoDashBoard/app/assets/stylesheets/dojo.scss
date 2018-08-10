@@ -22,6 +22,7 @@ nav a img {
     margin: 0.5rem 0;
     border-style: none;
 }
+
 nav a:hover { color: #06a9e2; cursor: pointer; }
 
 
@@ -49,8 +50,16 @@ ul .form-row { padding-left: 4rem !important; }
 
 // Table Section
 .theader      { color: #06a9e2; font-family: 'Poiret One', cursive; }
-.tdbody       { font-family: 'Poiret One', cursive; }
-.tdbody:hover { color: #06a9e2; background-color: #000; }
+.trbody       { font-family: 'Poiret One', cursive; }
+.trbody > td  { padding: 0; }
+.trbody > td:last-child > a { margin: 0.1rem auto;  width: 5rem; }
+.trbody > td:last-child > form {
+    input { margin: 0; }
+    width: 5rem;
+    margin: 0rem auto;
+    display: inline-table !important;
+}
+.trbody:hover { color: #06a9e2; background-color: #0000006b !important; }
 .scrolling-wrapper {
     -webkit-overflow-scrolling: touch;
     padding-bottom: 12rem;
@@ -63,7 +72,7 @@ ul .form-row { padding-left: 4rem !important; }
   }
   ::-webkit-scrollbar { width: 12px; }
   ::-webkit-scrollbar-track { display: none; }
-  
+
 
 // Container section
 .container { height: 70% !important; width: 50%; background-color: #171414e3; color: #f5f5f5; padding: 4rem 2rem; margin: 0rem auto;}
@@ -80,17 +89,44 @@ ul .form-row { padding-left: 4rem !important; }
     color: white;
     margin-top: 2rem;
     border-radius: .2rem;
+    background-color: #111;
     border: 1px solid #f5f5f5;
     // background-color: #357ae8;
-    box-shadow: 1px 2px 2px 0px #444 !important;
-    background-color: #222 !important;
     transition: all .3s ease-in-out;
+    box-shadow: 1px 2px 2px 0px #444 !important;
 }
 .sn:hover {
     color: #06a9e2;
     transition: all .3s ease-in-out;
     background-color: #000 !important;
     box-shadow: 0px 0px 0px 0px #222 !important;
+}
+.show {
+    border-radius: 1rem;
+    font-size: 10px;
+    color: #06a9e2;
+    &:hover {
+        color: white !important;
+        background-color: #357ae8 !important;
+    }
+}
+.edit {
+    border-radius: 1rem;
+    font-size: 10px;
+    color: lime;
+    &:hover {
+        color: white !important;
+        background-color: green !important;
+    }
+}
+.delete {
+    border-radius: 1rem;
+    font-size: 10px;
+    color: #f44336;
+    &:hover {
+        color: white !important;
+        background-color: red !important;
+    }
 }
 .brand-logo {
     font-family: 'Days One', sans-serif;

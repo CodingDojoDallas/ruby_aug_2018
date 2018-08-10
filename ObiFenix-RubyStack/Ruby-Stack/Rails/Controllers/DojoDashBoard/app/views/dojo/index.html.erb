@@ -10,19 +10,29 @@
         <thead>
         <tr>
             <th class="theader">Coding Dojo Branch</th>
-            <th class="theader">Street</th>
-            <th class="theader">City  </th>
-            <th class="theader">State </th>
+            <th class="theader">Street            </th>
+            <th class="theader">City              </th>
+            <th class="theader">State             </th>
+            <th class="theader">Actions           </th>
         </tr>
         </thead>
         <tbody>
             <div>
                 <% @alldojos.each do |dojo| %>
-                <tr>
-                    <td class="tdbody"><%= dojo.branch %></td>
-                    <td class="tdbody"><%= dojo.street %></td>
-                    <td class="tdbody"><%= dojo.city   %></td>
-                    <td class="tdbody"><%= dojo.state  %></td>
+                <tr class="trbody">
+                    <td><%= dojo.branch %></td>
+                    <td><%= dojo.street %></td>
+                    <td><%= dojo.city   %></td>
+                    <td><%= dojo.state  %></td>
+                    <td class="">
+                        <a class="btn-small sn show" href="/dojos/<%= dojo.id %>"> Show</a>
+                        <a class="btn-small sn edit" href="/dojos/<%= dojo.id %>/edit" %>Edit</a>
+                        <form action="/dojos/<%= dojo.id %>" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+                            <input type="submit" value="Delete" class="btn-small sn delete">
+                        </form>
+                    </td>
                 </tr>
                 <% end %>
             </div>

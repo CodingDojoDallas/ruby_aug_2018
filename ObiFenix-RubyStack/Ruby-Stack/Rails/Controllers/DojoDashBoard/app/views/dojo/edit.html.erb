@@ -1,2 +1,59 @@
-<h1>Dojo#edit</h1>
-<p>Find me in app/views/dojo/edit.html.erb</p>
+<!-- EDIT DOJO PAGE COMPONENT -->
+
+<div class="container">
+
+    <h2>Edit Dojo</h2>
+
+    <div class="row">
+    <form class="col s12 mt-4" action="/dojos/<%= @dojo.id %>/update" method="POST">
+        <!--
+        Error Display... if any
+        -->
+        <% if @dojo.errors.any? %>
+        <div id="error_explanation">
+            <h5>
+                <span class="blue-text"><%= pluralize(@dojo.errors.count, "error") %></span>
+                prohibited this dojo from being saved:
+            </h5>
+            <ul>
+                <% @dojo.errors.full_messages.each do |message| %>
+                <li class="red-text"><span class="blue-text right-margin">&#187;</span><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+        <!--
+        Form Requirements
+        -->
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="" id="name" name="dojo[branch]" type="text" class="validate white-text" value="<%= @dojo.branch %>">
+                <label for="name">Branch</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="" id="name" name="dojo[street]" type="text" class="validate white-text" value="<%= @dojo.street %>">
+                <label for="name">Street</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="" id="name" name="dojo[city]" type="text" class="validate white-text" value="<%= @dojo.city %>">
+                <label for="name">City</label>
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="" id="name" name="dojo[state]" type="text" class="validate white-text" value="<%= @dojo.state %>">
+                <label for="name">State</label>
+            </div>
+        </div>
+        <button class="btn waves-effect sn" type="submit" name="action">Submit
+            <i class="material-icons right blue-text">send</i>
+        </button>
+    </form> <!-- Form ends -->
+    </div>  <!-- row ends -->
+</div>  <!-- Container ends -->
