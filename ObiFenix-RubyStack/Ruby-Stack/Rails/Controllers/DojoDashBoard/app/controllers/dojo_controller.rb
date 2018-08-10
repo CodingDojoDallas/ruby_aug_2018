@@ -1,4 +1,5 @@
 class DojoController < ApplicationController
+
   before_action :set_dojo, only: [:show, :edit, :update, :destroy]
 
   # GET Request - Renders root/home page [.html]
@@ -6,10 +7,12 @@ class DojoController < ApplicationController
     @alldojos = Dojo.all
   end
 
+
   # GET Request - Renders [.html]
   def new
     @dojo = Dojo.new
   end
+
 
   # POST Request [.html]
   # POST Request [.json]
@@ -27,16 +30,19 @@ class DojoController < ApplicationController
     end
   end
 
+
   # GET Request - Renders [.html]
   def show
     @dojo = Dojo.find(params[:id])
   end
+
 
   # GET Request - Renders [.html]
   def edit
     @dojo = Dojo.find(params[:id])
     render "edit"
   end
+
 
   # PATCH/PUT Request [.html]
   # PATCH/PUT Request [.json]
@@ -52,9 +58,17 @@ class DojoController < ApplicationController
     end
   end
 
+
+  # DELETE /users/1
+  # DELETE /users/1.json
   def destroy
-    fail
+    Dojo.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to '/', notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -7,8 +7,8 @@ nav {
 
 body {
     width: 100%;
-    height: 100%;
-    position: static;
+    height: 100vh;
+    // position: static;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -64,11 +64,11 @@ ul .form-row { padding-left: 4rem !important; }
     -webkit-overflow-scrolling: touch;
     padding-bottom: 12rem;
     overflow-y: scroll;
-    position:static;
+    position:relative;
     opacity: 0.8;
-    height: 50%;
-    width: 67%;
-    z-index: -1;
+    height: 50px !important;
+    width: 100%;
+    // z-index: -1;
   }
   ::-webkit-scrollbar { width: 12px; }
   ::-webkit-scrollbar-track { display: none; }
