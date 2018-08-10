@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'dojo#index'
-  # get 'dojo/new'
-  # get 'dojo/create'
-  # get 'dojo/show'
-  # get 'dojo/edit'
-  # get 'dojo/update'
-  # get 'dojo/destroy'
+  get  'dojos' => 'dojo#index'
+  get  'dojos/new' => 'dojo#new'
+  post 'dojos' => 'dojo#create'
+  # get  'dojos/show'
+  # get  'dojos/edit'
+  # post 'dojos/update'
+  # post 'dojos/destroy'
 end

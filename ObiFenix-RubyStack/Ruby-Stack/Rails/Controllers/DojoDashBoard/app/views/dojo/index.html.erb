@@ -1,25 +1,34 @@
 <div class="container">
-    <h1>Listing <span class="white-text"><%= @alldojos.count %></span> Dojos</h1>
+
+    <% if notice %>
+    <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <h2>Listing <span class="white-text"><%= @alldojos.count %></span> Dojos</h2>
 
     <table class="highlight">
         <thead>
         <tr>
             <th class="theader">Coding Dojo Branch</th>
             <th class="theader">Street</th>
-            <th class="theader">City</th>
-            <th class="theader">State</th>
+            <th class="theader">City  </th>
+            <th class="theader">State </th>
         </tr>
         </thead>
         <tbody>
-        <% @alldojos.each do |dojo| %>
-        <tr>
-            <td class="tdbody"><%= dojo.branch %></td>
-            <td class="tdbody"><%= dojo.street %></td>
-            <td class="tdbody"><%= dojo.city   %></td>
-            <td class="tdbody"><%= dojo.state  %></td>
-        </tr>
-        <% end %>
+            <div>
+                <% @alldojos.each do |dojo| %>
+                <tr>
+                    <td class="tdbody"><%= dojo.branch %></td>
+                    <td class="tdbody"><%= dojo.street %></td>
+                    <td class="tdbody"><%= dojo.city   %></td>
+                    <td class="tdbody"><%= dojo.state  %></td>
+                </tr>
+                <% end %>
+            </div>
         </tbody>
     </table>
+
+    <button class="btn sn"><%= link_to 'New Dojo', dojos_new_path %></button>
 
 </div>
