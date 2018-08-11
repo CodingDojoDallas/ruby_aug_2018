@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   post 'users' => 'users#create'
 
+  patch 'users/:id' => 'users#update'
+
+  delete 'users/:id' => 'users#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

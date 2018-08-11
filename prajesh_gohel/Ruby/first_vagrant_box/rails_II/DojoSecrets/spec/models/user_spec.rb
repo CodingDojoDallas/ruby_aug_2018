@@ -44,4 +44,24 @@ RSpec.describe User, type: :model do
       expect(build(:user, password_confirmation: 'notpassword')).to be_invalid
     end
   end
+
+  context "relationships" do
+    before do
+      @user = create(:user)
+      @secret = create(:secret, user: @user)
+      @like = create(:like, user: @user, secret: @secret)
+    end
+
+    it "has secrets" do
+      expect(@user.secrets).to include(@secret)
+    end
+
+    it "has likes" do
+      expect(@user.likes).to include(@like)
+    end
+
+    it "has secrets through likes table" do
+      expect(@user.secrets_liked).to include(@secret)
+    end
+  end
 end
