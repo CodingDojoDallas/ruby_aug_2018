@@ -1,0 +1,64 @@
+<div class="container">
+
+    <!--
+    ====================
+    Notification Section
+    ====================
+    -->
+    <% if notice %>
+    <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <!--
+    ==========
+    Header...
+    ==========
+    -->
+    <h4 class="student_header">
+        <%= @this_dojo.branch %>'s <span class="white-text">
+        <%= @this_student %>
+        </span>
+    </h4>
+    <ul class="col s12">
+        <li class="col s6 mt-3 mb-3"><h6>Email: <span class="blue-text"><%= @student.email %></span></li></h6>
+    </ul>
+
+    <!--
+    =========================
+    Dojo/Student Cohort Table
+    =========================
+    -->
+    <table class="highlight">
+        <h4>Cohort</h4>
+        <thead>
+        <tr>
+            <th class="theader">First Name</th>
+            <th class="theader">Last Name </th>
+            <th class="theader">Email     </th>
+        </tr>
+        </thead>
+        <tbody>
+            <div>
+                <% @this_dojo.students.each do |student| %>
+                <tr class="trbody">
+                    <td><%= student.first_name %></td>
+                    <td><%= student.last_name  %></td>
+                    <td><%= student.email      %></td>
+                </tr>
+                <% end %>
+            </div>
+        </tbody>
+    </table>
+
+    <!--
+    Actions
+    -->
+    <form action="/dojo/<%= @this_dojo.id %>/students/<%= @student.id %>" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <div class="grided">
+            <a href="/dojo/<%= @this_dojo.id %>/students/<%= @student.id %>/edit" class="btn btn-medium sn blue-text top-margin6">Edit</a>
+            <button type="submit" class="btn btn-medium sn red-text top-margin6">Delete</button>
+        </div>
+    </form>
+</div>

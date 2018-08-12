@@ -1,0 +1,67 @@
+
+
+<!-- ADD New Student to a Student PAGE COMPONENT -->
+
+<div class="container">
+    <h2>New Student</h2>
+    <div class="row">
+        <form class="col s12 mt-4" action="/dojo/<%= session["dojo_id"] %>/students" method="POST">
+            <!--
+            =========================
+            [ Error Display... if any
+            =========================
+            -->
+            <% if @student.errors.any? %>
+            <div id="error_explanation">
+                <h5>
+                    <span class="blue-text"><%= pluralize(@student.errors.count, "error") %></span>
+                    prohibited this student from being saved:
+                </h5>
+                <ul>
+                    <% @student.errors.full_messages.each do |message| %>
+                    <li class="red-text"><span class="blue-text right-margin1">&#187;</span><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+             <!--========================================================
+            [ Form Requirements/Characteristics for a PUT/PATCH Request ]
+            =============================================================
+            -->
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <!--==================================================================================
+            -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="" id="name" name="student[first_name]" type="text" class="validate white-text">
+                    <label for="name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="" id="name" name="student[last_name]" type="text" class="validate white-text">
+                    <label for="name">Last Name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="" id="name" name="student[email]" type="text" class="validate white-text">
+                    <label for="name">Email</label>
+                </div>
+                <div class="input-field col s6">
+                    <select class="custom-select" id="branch" name="student[dojo_id]">
+                        <!-- <option value="0" selected><span class="red-text">Select your dojo branch...</span></option> -->
+
+                        <option value="<%= session["dojo_id"] %>" selected><%= session["branch"] %></option>
+                        <% if @dojos %><% @dojos.each do |dojo| %>
+                        <option value="<%= dojo.id %>"><%= dojo.branch %></option>
+                        <% end %><% end %>
+                    </select>
+                    <label class="input-group-text" for="inputGroupSelect01">Dojos</label>
+                </div>
+            </div>
+            <button class="btn waves-effect sn top-margin2" style="margin-bottom:2rem;" type="submit" name="action">Submit
+                <i class="material-icons right blue-text">send</i>
+            </button>
+        </form>
+    </div>
+</div>

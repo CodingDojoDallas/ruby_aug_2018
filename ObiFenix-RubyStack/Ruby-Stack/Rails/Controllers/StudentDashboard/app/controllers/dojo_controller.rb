@@ -2,20 +2,32 @@ class DojoController < ApplicationController
 
   before_action :set_dojo, only: [:show, :edit, :update, :destroy]
 
+  # ============================================
   # GET Request - Renders root/home page [.html]
+  # ============================================
   def index
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
     @alldojos = Dojo.all
   end
 
 
+  # =============================
   # GET Request - Renders [.html]
+  # =============================
   def new
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
     @dojo = Dojo.new
   end
 
 
+  # ====================
   # POST Request [.html]
   # POST Request [.json]
+  # ====================
   def create
     @dojo = Dojo.create(validate_params)
     # @dojo.valid?
@@ -31,21 +43,34 @@ class DojoController < ApplicationController
   end
 
 
+  # =============================
   # GET Request - Renders [.html]
+  # =============================
   def show
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
     @dojo = Dojo.find(params[:id])
+    @students = @dojo.students.order(:last_name)
   end
 
 
+  # =============================
   # GET Request - Renders [.html]
+  # =============================
   def edit
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
     @dojo = Dojo.find(params[:id])
     render "edit"
   end
 
 
+  # =========================
   # PATCH/PUT Request [.html]
   # PATCH/PUT Request [.json]
+  # =========================
   def update
     respond_to do |format|
       if @dojo.update(validate_params)
@@ -59,8 +84,10 @@ class DojoController < ApplicationController
   end
 
 
+  # ====================
   # DELETE /dojos/1
   # DELETE /dojos/1.json
+  # ====================
   def destroy
     Dojo.find(params[:id]).destroy
     respond_to do |format|
