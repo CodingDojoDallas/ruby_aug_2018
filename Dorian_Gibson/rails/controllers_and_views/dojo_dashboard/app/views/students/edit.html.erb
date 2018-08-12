@@ -1,12 +1,11 @@
 <div class='col-8 Absolute-Center is-Responsive'>
-    <h1>Editing <%= @dojo.branch %> </h1>
-    <form class="form-signin" action="/dojos/<%= @dojo.id %>" method="post">
+    <h1>Editing <%= @student.first_name %> <%= @student.last_name %> </h1>
+    <form class="form-signin" action="/dojos/<%= @dojo.id %>/students/<%= @student.id %>" method="post">
         <input type='hidden' name='_method' value='patch'>
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="text" name="dojo[branch]" class="form-control" value= "<%= @dojo.branch %>" >
-        <input type="text" name="dojo[street]" class="form-control" value= "<%= @dojo.street %>" >
-        <input type="text" name="dojo[city]" class="form-control" value= "<%= @dojo.city %>" >
-        <input type="text" name="dojo[state]" class="form-control" value= "<%= @dojo.state %>" >
+        <input type="text" name="student[first_name]" class="form-control" value= "<%= @student.first_name %>" >
+        <input type="text" name="student[last_name]" class="form-control" value= "<%= @student.last_name %>" >
+        <input type="text" name="student[email]" class="form-control" value= "<%= @student.email %>" >
         <div class="wrapper">
             <span class="group-btn  col-lg-6">     
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Update</button>
@@ -17,4 +16,3 @@
     <div class="notice"><%= flash[:error] %></div>
   <% end %>
 </div>
-    

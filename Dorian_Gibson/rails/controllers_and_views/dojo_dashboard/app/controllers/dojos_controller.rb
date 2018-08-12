@@ -24,6 +24,7 @@ class DojosController < ApplicationController
 
   def show
     @dojo = Dojo.find(params[:id])
+    @students = Dojo.find(params[:id]).students
   end
 
   def destroy

@@ -1,12 +1,13 @@
-<div>
+<div class = 'col-8 Absolute-Center is-Responsive'>
     <h1>Listing <%=@dojos.length%> Dojos</h1>
-    <table class='table col 1'>
-       <thead>
+    <table class='table table-striped text-center'>
+       <thead class='thead-dark'>
             <tr>
-                <td>Branch</td>
-                <td>Street</td>
-                <td>City</td>
-                <td>State</td>
+                <th>Branch</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -17,15 +18,16 @@
                <td><%= dojo.city %></td>
                <td><%= dojo.state %></td>
                 <td>
-                    <a href='/dojos/<%= dojo.id %>'>Show</a>
-                    <a href='/dojos/<%= dojo.id %>/edit'>Edit</a>
-                    <a href='/dojos/<%= dojo.id %>' data-method="delete">Destroy</a>
+                    <a href='/dojos/<%= dojo.id %>' class='btn btn-outline-dark mr-1'>Show</a>
+                    <a href='/dojos/<%= dojo.id %>/edit' class='btn btn-outline-dark mx-2'>Edit</a>
+                    <a href='/dojos/<%= dojo.id %>' data-method="delete" class='btn btn-outline-dark ml-1'>Destroy</a>
                </td>
             </tr>
             <% end %>  
         </tbody>
     </table>
-    <a href='/dojos/new'><button>New Dojo</button></a>
+    <a href='/dojos/new' class='btn btn-dark'>New Dojo</a>
+
     <% if flash[:success] %>
     <div class="notice"><%= flash[:success] %></div>
   <% end %>
