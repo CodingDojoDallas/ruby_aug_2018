@@ -67,12 +67,11 @@
     </div>
     <div class='row mr-0'>
         <div class='col-12'>
-            <div class="scrollbar bg-white border border-dark col-12">
+            <textarea class='form-control' rows='4' name='activities' disabled>
                 <% session[:activities].reverse.each do |activity| %>
-                <p style="color: <%= activity['color'] %>"><%= activity['msg'] %></p>
-                <br>
+                    <p style="color: <%= activity['color'] %>"><%= activity['msg'] %></p>
                 <% end %>
-            </div>
+            </textarea>
         </div>
     </div>
 </div>
