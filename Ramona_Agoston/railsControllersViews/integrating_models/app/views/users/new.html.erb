@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New User</title>
+</head>
+<body>
+    <div>
+        <h2> Add a New User </h2>
+        <form action="/users" method="POST">
+            <input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>" >
+            <label>First Name:</label>
+            <input type="text" name="user[first_name]">
+
+            <label>Last Name:</label>
+            <input type="text" name="user[last_name]">
+
+            <input type="submit" value="Add New User">
+        </form>
+        <a href="/users"> Go Back </a>
+    </div>
+</body>
+</html>
