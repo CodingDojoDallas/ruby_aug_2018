@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:create, :new]
+  before_action :authorize_user, except: [:create, :new]
   def new
   end
 
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @secrets = Secret.where(user_id: current_user.id)
   end
 
   def edit
@@ -39,5 +42,11 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def authorize_user
+      unless session[:user_id].to_s == params[:id]
+        redirect_to "/users/#{session[:user_id].to_s}"
+      end
     end
 end

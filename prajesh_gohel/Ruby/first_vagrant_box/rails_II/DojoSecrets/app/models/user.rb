@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: EMAIL_REGEX }, uniqueness: true
   before_save :downcase_fields
 
-  def downcase_fields
-    self.email.downcase!
-  end
+  private
+    def downcase_fields
+      self.email.downcase!
+    end
 end
