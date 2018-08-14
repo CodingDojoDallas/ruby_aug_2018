@@ -46,11 +46,10 @@ RSpec.describe User do
 		end
 
     # TEST #5 => correct <email> format
-		it "should contain a valid email" do
+    it "should not save if innvalid email format" do
 			user = User.new(first_name: 'Arden', last_name: 'Zhan', email: 'invalidemail')
 			expect(user).to be_invalid
 		end
 
   end
-
 end
