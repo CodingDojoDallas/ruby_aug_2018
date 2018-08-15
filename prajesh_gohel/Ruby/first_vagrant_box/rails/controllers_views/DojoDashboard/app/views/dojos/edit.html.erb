@@ -1,0 +1,19 @@
+<% if flash[:notice] %>
+  <% for message in flash[:notice] %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+<h1> Editing <%= @dojo.city %>
+
+<form action="/dojos/<%= @dojo.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="dojo[branch]" placeholder="Branch" value="<%= @dojo.branch %>">
+    <input type="text" name="dojo[street]" placeholder="Street" value="<%= @dojo.street %>">
+    <input type="text" name="dojo[city]" placeholder="City" value="<%= @dojo.city %>">
+    <input type="text" name="dojo[state]" placeholder="State" value="<%= @dojo.state %>">
+    <input type="submit" value="Update">
+</form>
+
+<a href="/dojos">Home &#8739; </a>
+<a href="/dojos/<%= @dojo.id %>">Show &#8739; </a>

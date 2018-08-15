@@ -1,0 +1,69 @@
+<% content_for :header do %>
+  <h2>Please <span class="text-success">Login</span> or <span class="text-primary">Register</span> Here</h2>
+<% end %>
+
+<% content_for :left_column do %>
+  <form action="/sessions" method="post">
+    <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+    <h4>Login:</h4>
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="emaillog">Email:</label>
+        <input class="form-control" type="email" id="emaillog" name="session[email]">
+      </div>
+      <div class="form-group col-6">
+        <label for="passlog">Password:</label>
+        <input class="form-control" type="password" id="passlog" name="password">
+      </div>
+    </div>
+    <button class="btn btn-success" type="submit" name="submitlog">Login</button>
+  </form>
+<% end %>
+
+<% content_for :right_column do %>
+  <form class="offset-3" action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+    <h4>Registration:</h4>
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="first_name">First Name:</label>
+        <input class="form-control" type="text" id="first_name "name="user[first_name]" placeholder="First Name">
+        <div class="invalid-feedback">
+        </div>
+      </div>
+      <div class="form-group col-6">
+        <label for="last_name">Last Name:</label>
+        <input class="form-control" type="text" id="last_name" name="user[last_name]" placeholder="Last Name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="pass">Password:</label>
+        <input class="form-control" type="password" id="pass" name="user[password]">
+      </div>
+      <div class="form-group col-6">
+        <label for="pass_confirm">Confirm Password:</label>
+        <input class="form-control" type="password" id="pass_confirm" name="user[password_confirmation]">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-8">
+        <label for="city">City:</label>
+        <input type="text" name="user[city]" class="form-control" id="city">
+      </div>
+      <div class="form-group col-4">
+        <label>State:</label>
+        <select name="user[state]" id="state" class="form-control">
+          <%= states_helper.each do |key, value| %>
+            <option value="<%= key %>"><%= value %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input class="form-control" type="email" id="email" name="user[email]" placeholder="123@email.com">
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+<% end %>

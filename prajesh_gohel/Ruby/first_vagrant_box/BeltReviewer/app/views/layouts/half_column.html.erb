@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Register</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar bg-dark d-flex bd-highlight mb-3">
+      <%= yield :header %>
+      <% if current_user %>
+        <a class="p-2 bd-highlight" href="/sessions/<%= current_user.id %>" data-method="delete">Log Out</a>
+      <% end %>
+    </div>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |m| %>
+        <p class="alert alert-danger"><%= m %></p>
+      <% end %>
+    <% end %>
+    <div class="container">
+      <div class="col-md-6">
+        <%= yield :column %>
+      </div>
+    </div>
+
+    <%= yield %>
+
+  </body>
+</html>

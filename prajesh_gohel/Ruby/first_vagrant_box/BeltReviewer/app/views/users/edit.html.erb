@@ -1,0 +1,46 @@
+<% content_for :header do %>
+  <h1 class="text-white mr-auto p-2 bd-highlight">Edit Your Profile</h1>
+  <a class="p-2 bd-highlight" href="/events">Events Dashboard</a>
+<% end %>
+
+<% content_for :column do %>
+<form class="offset-3" action="/users/<%= current_user.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="first_name">First Name:</label>
+      <input class="form-control" type="text" id="first_name "name="user[first_name]" value="<%= current_user.first_name %>" placeholder="First Name">
+      <div class="invalid-feedback">
+      </div>
+    </div>
+    <div class="form-group col-6">
+      <label for="last_name">Last Name:</label>
+      <input class="form-control" type="text" id="last_name" name="user[last_name]" value="<%= current_user.last_name %>" placeholder="Last Name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-8">
+      <label for="city">City:</label>
+      <input type="text" name="user[city]" value="<%= current_user.city %>" class="form-control" id="city">
+    </div>
+    <div class="form-group col-4">
+      <label>State:</label>
+      <select name="user[state]" id="state" class="form-control">
+        <%= states_helper.each do |key, value| %>
+          <% if key.to_s == current_user.state %>
+            <option selected value="<%= key %>"><%= value %></option>
+          <% else %>
+            <option value="<%= key %>"><%= value %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input class="form-control" type="email" id="email" name="user[email]" value="<%= current_user.email %>" placeholder="123@email.com">
+  </div>
+  <button class="btn btn-primary" type="submit">Update</button>
+</form>
+<% end %>

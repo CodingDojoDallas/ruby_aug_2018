@@ -1,0 +1,58 @@
+<div class="navbar bg-dark mb-3">
+  <h1 class="mr-auto p-2 bd-highlight text-white"><%= @event.name %></h1>
+  <a class="p-2 bd-highlight" href="/events">Events Dashboard</a>
+  <% if current_user %>
+    <a class="p-2 bd-highlight" href="/sessions/<%= current_user.id %>" data-method="delete">Log Out</a>
+  <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <p>Host: <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+      <p>Date: <%= @event.date.strftime("%B %d, %Y") %></p>
+      <p>Location: <%= @event.city %>, <%= @event.state %></p>
+      <p>People who are joining the event: <%= @event.users_joined.count %></p>
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @event.users_joined.each do |user| %>
+          <tr>
+            <td><%= user.first_name %> <%= user.last_name %></td>
+            <td><%= user.city %></td>
+            <td><%= user.state %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5">
+      <h3 class="font-weight-normal">Discussion about this event:</h3>
+      <div class="card border-dark scrollbar mb-5" style="height: 20rem;">
+        <div class="card-body text-success">
+            <% @comments.each do |c| %>
+              <p class="card-text"><%= c.user.first_name %> says: <%= c.text %></p>
+            <% end %>
+        </div>
+      </div>
+      <h5 class="font-weight-normal">Add Comment:</h5>
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |m| %>
+          <p class="alert alert-danger"><%= m %></p>
+        <% end %>
+      <% end %>
+      <form class="mt-3" action="/events/<%= @event.id %>/comments" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="form-group">
+          <textarea class="form-control col" name="comment[text]" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit Comment</button>
+      </form>
+    </div>
+  </div>
+</div>
