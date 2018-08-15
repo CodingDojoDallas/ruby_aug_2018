@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @secrets = Secret.where(user_id: current_user.id)
+    @likes = Like.all
   end
 
   def edit

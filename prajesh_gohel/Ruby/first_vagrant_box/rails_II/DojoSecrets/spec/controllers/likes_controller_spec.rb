@@ -29,7 +29,7 @@ RSpec.describe LikesController, type: :controller do
     end
     it "shouldn't be able to destroy a like" do
       get :destroy, id: @secret
-      expect(response).to redirect_to "/secrets"
+      expect(response).to redirect_to "/users/#{session[:user_id]}"
     end
   end
 end

@@ -1,0 +1,42 @@
+<% content_for :header do %>
+  <h1 class="text-white mr-auto p-2 bd-highlight">Editing <%= @event.name %></h1>
+  <a class="p-2 bd-highlight" href="/events">Events Dashboard</a>
+<% end %>
+
+<% content_for :column do %>
+<form class="offset-3" action="/events/<%= @event.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="fname">Name:</label>
+      <input class="form-control" type="text" id="name "name="event[name]" value="<%= @event.name %>" placeholder="Name">
+      <div class="invalid-feedback">
+      </div>
+    </div>
+    <div class="form-group col-6">
+      <label for="date">Date:</label>
+      <input class="form-control" type="date" id="date" name="event[date]" value="<%= @event.date %>">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-8">
+      <label for="city">City:</label>
+      <input type="text" name="event[city]" value="<%= @event.city %>" class="form-control" id="city">
+    </div>
+    <div class="form-group col-4">
+      <label>State:</label>
+      <select name="event[state]" id="state" class="form-control">
+        <%= states_helper.each do |key, value| %>
+          <% if key.to_s == @event.state %>
+            <option selected value="<%= key %>"><%= value %></option>
+          <% else %>
+            <option value="<%= key %>"><%= value %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Update</button>
+</form>
+<% end %>

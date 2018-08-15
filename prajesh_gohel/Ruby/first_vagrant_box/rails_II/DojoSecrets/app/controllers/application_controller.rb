@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to "/sessions/new" unless session[:user_id]
   end
-
-
-
+  
   helper_method :current_user, :require_login
 end
