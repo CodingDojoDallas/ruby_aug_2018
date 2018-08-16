@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :require_login, except: [:create, :new]
+  before_action :authorize_user, except: [:create, :new]
   def show
     @secrets = Secret.where(user_id: current_user.id)
     @likes = Like.all
