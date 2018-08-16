@@ -52,4 +52,5 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to redirect_to "/users/#{session[:user_id]}"
     end
   end
+  
 end

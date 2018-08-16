@@ -38,4 +38,5 @@ RSpec.describe SecretsController, type: :controller do
       expect(response).to redirect_to "/users/#{session[:user_id]}"
     end
   end
+  
 end
