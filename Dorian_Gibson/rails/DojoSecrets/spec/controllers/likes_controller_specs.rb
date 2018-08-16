@@ -23,7 +23,7 @@ RSpec.describe LikesController, type: :controller do
     end
   end
 
-  context "when logged in as the wrong user" do
+  context "when signed in as the wrong user" do
     before do
       session[:user_id] = @user2
     end
