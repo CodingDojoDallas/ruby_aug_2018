@@ -4,3 +4,26 @@
   <a href="/users/<%= current_user.id %>/edit">Edit Profile</a>
 </div>
 
+<div class="container">
+  <h2>Create a Secret:</h2>
+  <form class="col-6" action="/secrets" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <textarea class="col" name="secret[content]" rows="4" placeholder="Content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Secret</button>
+  </form>
+  <div class="row">
+    <table class="table col-6">
+      <tr>
+        <th> <a href="/secrets">Secrets</a> </th>
+        <th></th>
+      </tr>
+      <% @secrets.each do |secret| %>
+      <tr>
+        <td><%= secret.content %></td>
+        <td> <a href="/secrets/<%= secret.id %>" data-method="delete">Delete Secret</a> </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
