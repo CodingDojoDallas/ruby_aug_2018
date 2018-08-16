@@ -23,6 +23,7 @@ class SecretsController < ApplicationController
     else
       redirect_to "/users/#{session[:user_id]}"
     end
+    
   end
 
   private

@@ -51,4 +51,5 @@ class UsersController < ApplicationController
         redirect_to "/users/#{session[:user_id].to_s}"
       end
     end
+    
 end
