@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <%= e %>
+  <% end %>
+<% end %>
+  <% if current_user %>
+    <a class="d-flex justify-content-end mr-3" href="/sessions/<%= current_user.id %>" data-method="delete">Log Out</a>
+  <% end %>
+
 <%= yield %>
 
 </body>

@@ -1,0 +1,15 @@
+
+<div class="container">
+  <h1>Log in:</h1>
+  <form class="col-4" action="/sessions" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <input type="text" name="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" class="form-control" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Log In</button>
+  </form>
+  <a class="btn btn-secondary mt-2 ml-3" href="/users/new">Sign Up</a>
+</div>
