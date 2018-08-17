@@ -1,0 +1,41 @@
+<div class="container mb-4">
+    <h1> <%= @dojo.branch %> </h1>
+    <div class='col-4'>
+        <form action="/dojos/<%= @dojo.id %>" method="post">
+            <input type='hidden' name='_method' value='patch'>
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <!-- Branch -->
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Branch</label>
+                <div class="col-sm-8">
+                    <input type="text" name="dojo[branch]" class="form-control" value= "<%= @dojo.branch %>">
+                </div>
+            </div>
+            <!-- Street -->
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Street</label>
+                <div class="col-sm-8">
+                    <input type="text" name="dojo[street]" class="form-control" value= "<%= @dojo.street %>">
+                </div>
+            </div>
+            <!-- City -->
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-8">
+                    <input type="text" name="dojo[city]" class="form-control" value= "<%= @dojo.city %>">
+                </div>
+            </div>
+            <!-- State -->
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-3">
+                    <input type="text" name="dojo[state]" class="form-control" value= "<%= @dojo.state %>">
+                </div>
+            </div>
+            <button class="btn btn-secondary" type="submit">Update</button>
+            <% if flash[:error] %>
+            <div class="alert alert-danger"><%= flash[:error] %></div>
+            <% end %>
+        </form>
+    </div>
+</div>

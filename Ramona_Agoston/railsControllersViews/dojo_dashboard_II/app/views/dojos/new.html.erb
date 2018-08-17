@@ -1,0 +1,19 @@
+
+<div class="container">
+    <div class='col-4'>
+        <h1>New Dojo</h1>
+        <form class="form-signin" action="/dojos" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="text" name="branch" class="form-control" placeholder="Branch" >
+            <input type="text" name="street" class="form-control" placeholder="Street" >
+            <input type="text" name="city" class="form-control" placeholder="City" >
+            <input type="text" name="state" class="form-control col-sm-3" placeholder="State" >
+            <button class="btn btn-secondary" type="submit">Submit</button>
+            <button class="btn btn-none"><a href="/dojos">Cancel</a></button>
+        </form>
+        <% if flash[:error] %>
+        <div class="alert alert-danger"><%= flash[:error] %></div>
+        <% end %>
+    </div>
+
+</div>

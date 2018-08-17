@@ -1,0 +1,41 @@
+<a href="/events">Events Dashboard</a>
+<h2><%= @event.name %></h2>
+<p>Host: <%= @host.first_name %> <%= @host.last_name %></p>
+<p>Date: <%= @event.date.strftime("%B %d, %Y") %></p>
+<p>Location: <%= @event.city %>, <%= @event.state %></p>
+<p>People who are joining the event: <%= @joiners.count %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>State</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @joiners.each do |joiner| %>
+        <tr>
+            <td><%= joiner.first_name %> <%= joiner.last_name %></td>
+            <td><%= joiner.city %></td>
+            <td><%= joiner.state %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<h3>Discussion about this event:</h3>
+<div>
+    <% @comments.each do |comment| %>
+    <p><%= comment.user.first_name %> says: <%= comment.comment %></p>
+    <p>---------------</p>
+    <% end %>
+</div>
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+<p><%= error %></p>
+<% end %>
+<% end %>
+<%= form_tag("/events/#{@event.id}/comments", method: "post") do %>
+    <p><%= label_tag(:comment, "Add Comment:") %></p>
+    <p><%= text_area_tag(:comment) %></p>
+    <p><%= submit_tag("Submit Comment") %></p>
+<% end %>
