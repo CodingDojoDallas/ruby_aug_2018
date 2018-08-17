@@ -1,0 +1,16 @@
+<% if flash %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div> <br>
+  <% end %>
+<% end %>
+<h1>Please sign in here, dummy!</h1>
+<div class="col-4">
+  <form action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" name="username" id="username">
+      <button class="btn btn-primary mt-3" type="submit">Sign In</button>
+    </div>
+  </form>
+</div>

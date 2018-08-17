@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Register</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar mb-5">
+      <%= yield :header %>
+      <% if current_user %>
+        <a class="d-flex justify-content-end mr-3" href="/sessions/<%= current_user.id %>" data-method="delete">Log Out</a>
+      <% end %>
+    </div>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |m| %>
+        <p class="alert alert-danger"><%= m %></p>
+      <% end %>
+    <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <%= yield :left_column %>
+        </div>
+        <div class="col-md-6">
+          <%= yield :right_column %>
+        </div>
+      </div>
+    </div>
+
+    <%= yield %>
+
+  </body>
+</html>

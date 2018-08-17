@@ -1,0 +1,117 @@
+<div class="navbar bg-dark mb-3">
+  <h1 class="mr-auto p-2 bd-highlight text-white">Welcome, <%= current_user.first_name %>!</h1>
+  <a class="p-2 bd-highlight" href="/users/<%= current_user.id %>">Edit My Profile</a>
+  <% if current_user %>
+    <a class="p-2 bd-highlight" href="/sessions/<%= current_user.id %>" data-method="delete">Log Out</a>
+  <% end %>
+</div>
+
+<div class="container">
+  <h3 class="font-weight-normal">Here are some of the events at your state:</h3>
+  <table class="table mb-5">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Host</th>
+        <th>Action/Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @state_events.each do |event| %>
+      <tr>
+        <td> <a href="/events/<%= event.id %>"><%= event.name %></a> </td>
+        <td><%= event.date.strftime("%B %d, %Y") %></td>
+        <td><%= event.city %></td>
+        <td><%= event.user.first_name %> <%= event.user.last_name %></td>
+        <td>
+          <% if current_user.id == event.user_id %>
+          <a href="/events/<%= event.id %>/edit">Edit</a>
+          <a href="/events/<%= event.id %>" data-method="delete">Delete</a>
+          <% elsif current_user.events_joined.include? event %>
+          <p>Joined</p>
+          <a href="joins/<%= event.joins.find_by(user_id: current_user.id).id %>" data-method="delete">Cancel</a>
+          <% else %>
+          <a href="events/<%= event.id %>/joins" data-method="post">Join</a>
+          <% end %>
+         </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h3 class="font-weight-normal">Here are some of the events in other states:</h3>
+  <table class="table mb-5">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>State</th>
+        <th>Host</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @other_events.each do |event| %>
+      <tr>
+        <td> <a href="/events/<%= event.id %>"><%= event.name %></a> </td>
+        <td><%= event.date.strftime("%B %d, %Y") %></td>
+        <td><%= event.city %></td>
+        <td><%= event.state %></td>
+        <td><%= event.user.first_name %> <%= event.user.last_name %></td>
+        <td>
+          <% if current_user.id == event.user_id %>
+          <a href="/events/<%= event.id %>/edit">Edit</a>
+          <a href="/events/<%= event.id %>" data-method="delete">Delete</a>
+          <% elsif current_user.events_joined.include? event %>
+          <p>Joined</p>
+          <a href="joins/<%= event.joins.find_by(user_id: current_user.id).id %>" data-method="delete">Cancel</a>
+          <% else %>
+          <a href="events/<%= event.id %>/joins" data-method="post">Join</a>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="col-4">
+    <h3 class="font-weight-normal">Add Event</h3>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |m| %>
+        <p class="alert alert-danger"><%= m %></p>
+      <% end %>
+    <% end %>
+    <form class="mb-5" action="/events" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="event[name]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" name="event[date]" class="form-control">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-8">
+          <label for="city">City:</label>
+          <input type="text" name="event[city]" class="form-control" id="city">
+        </div>
+        <div class="form-group col-4">
+          <label>State:</label>
+          <select name="event[state]" id="state" class="form-control">
+            <%= states_helper.each do |key, value| %>
+              <% if key.to_s == current_user.state %>
+                <option selected value="<%= key %>"><%= value %></option>
+              <% else %>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Event</button>
+    </form>
+  </div>
+</div>
