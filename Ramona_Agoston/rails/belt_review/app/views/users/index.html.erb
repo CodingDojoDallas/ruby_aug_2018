@@ -1,0 +1,28 @@
+<h2>Welcome!</h2>
+<h3>Register</h3>
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+    <p><%= error %></p>
+    <% end %>
+<% end %>
+<%= form_tag("/users", method: "post") do %>
+    <p><%= label(:user, :first_name, "First Name:") %> <%= text_field(:user, :first_name) %></p>
+    <p><%= label(:user, :last_name, "Last Name:") %> <%= text_field(:user, :last_name) %></p>
+    <p><%= label(:user, :email, "Email:") %> <%= text_field(:user, :email) %></p>
+    <p>
+        <%= label(:user, :city, "Location:") %>
+        <%= text_field(:user, :city) %>
+        <%= select(:user, :state, [["AK","AK"],["AL","AL"],["AR","AR"],["AZ","AZ"],["CA","CA"],["CO","CO"],["CT","CT"],["DC","DC"],["DE","DE"],["FL","FL"],["GA","GA"],["HI","HI"],["IA","IA"],["ID","ID"],["IL","IL"],["IN","IN"],["KS","KS"],["KY","KY"],["LA","LA"],["MA","MA"],["MD","MD"],["ME","ME"],["MI","MI"],["MN","MN"],["MO","MO"],["MS","MS"],["MT","MT"],["NC","NC"],["ND","ND"],["NE","NE"],["NH","NH"],["NJ","NJ"],["NM","NM"],["NV","NV"],["NY","NY"],["OH","OH"],["OK","OK"],["OR","OR"],["PA","PA"],["RI","RI"],["SC","SC"],["SD", "SD"],["TN","TN"],["TX","TX"],["UT","UT"],["VA","VA"],["VT","VT"],["WA","WA"],["WI","WI"],["WV","WV"],["WY","WY"]]) %>
+    </p>
+    <p><%= label(:user, :password, "Password:") %> <%= password_field(:user, :password) %></p>
+    <p>* Password should be at least 8 characters</p>
+    <p><%= label(:user, :password_confirmation, "Confirm PW:") %> <%= password_field(:user, :password_confirmation) %></p>
+    <p><%= submit_tag("Register") %></p>
+<% end %>
+<h3>Login</h3>
+<p><%= flash[:notice] %></p>
+<%= form_tag("/sessions", method: "post") do %>
+    <p><%= label_tag(:email, "Email:") %> <%= text_field_tag(:email) %></p>
+    <p><%= label_tag(:password, "Password:") %> <%= password_field_tag(:password) %></p>
+    <p><%= submit_tag("Login") %></p>
+<% end %>

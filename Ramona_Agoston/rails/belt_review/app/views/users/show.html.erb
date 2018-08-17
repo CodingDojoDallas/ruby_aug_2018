@@ -1,0 +1,18 @@
+<a href="/events">Events Dashboard</a>
+<h3>Edit Your Profile</h3>
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+<p><%= error %></p>
+<% end %>
+<% end %>
+<%= form_tag("/users/#{@user.id}", method: "patch") do %>
+    <p><%= label(:user, :first_name, "First Name:") %> <%= text_field(:user, :first_name) %></p>
+    <p><%= label(:user, :last_name, "Last Name:") %> <%= text_field(:user, :last_name) %></p>
+    <p><%= label(:user, :email, "Email:") %> <%= text_field(:user, :email) %></p>
+    <p>
+        <%= label(:user, :city, "Location:") %>
+        <%= text_field(:user, :city) %>
+        <%= select(:user, :state, [["AK","AK"],["AL","AL"],["AR","AR"],["AZ","AZ"],["CA","CA"],["CO","CO"],["CT","CT"],["DC","DC"],["DE","DE"],["FL","FL"],["GA","GA"],["HI","HI"],["IA","IA"],["ID","ID"],["IL","IL"],["IN","IN"],["KS","KS"],["KY","KY"],["LA","LA"],["MA","MA"],["MD","MD"],["ME","ME"],["MI","MI"],["MN","MN"],["MO","MO"],["MS","MS"],["MT","MT"],["NC","NC"],["ND","ND"],["NE","NE"],["NH","NH"],["NJ","NJ"],["NM","NM"],["NV","NV"],["NY","NY"],["OH","OH"],["OK","OK"],["OR","OR"],["PA","PA"],["RI","RI"],["SC","SC"],["SD", "SD"],["TN","TN"],["TX","TX"],["UT","UT"],["VA","VA"],["VT","VT"],["WA","WA"],["WI","WI"],["WV","WV"],["WY","WY"]]) %>
+    </p>
+    <p><%= submit_tag("Update Records") %></p>
+<% end %>
