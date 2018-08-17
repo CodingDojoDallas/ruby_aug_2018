@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'students/index'
 
-  # get 'dojos' => 'dojos#index'
-
-  resources :dojos
+  root 'dojos#root'
+  resources :dojos do
+    resources :students
+  end
 
 end

@@ -1,0 +1,77 @@
+<header>
+    <div class="navbar navbar-dark bg-dark box-shadow mb-2">
+        <div class="navbar-left">
+            <div class="navbar-brand d-flex">
+                <a href="#" class='ml-3'><%= image_tag "ninjaLogo.png", :width =>"15%;" %><span class='h1 ' style='color:#fff; text-decoration:none'>Ninja Gold</span></a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class='container'>
+    <div class="row mb-4">
+        <div class="col-2">
+            <h3>Your Gold:</h3>
+        </div>
+        <div class="col-2">
+            <textarea type='text' class='form-control' rows='1' disabled><%= session[:gold] %></textarea>
+        </div>
+    </div>
+    <div class='row mb-2'>
+        <div class="card ml-3 shadow mb-5 bg-white rounded" style="width: 16rem;">
+            <%= image_tag "farm.jpg", :class => "card-img-top" %>
+            <div class="card-body">
+                <h2 class='card-title'>Farm</h2>
+                <p class='card-text'>(earns 10 - 20 golds)</p>
+                <form action='/farm' method='post'>
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <button type='submit' class="btn btn-warning" name='submit'>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+        <div class="card ml-4 shadow mb-5 bg-white rounded" style="width: 16rem;">
+            <%= image_tag "cave.jpg", :class => "card-img-top" %>
+            <div class="card-body">
+                <h2 class='card-title'>Cave</h2>
+                <p class='card-text'>(earns 5 - 10 golds)</p>
+                <form action='/cave' method='post'>
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <button type='submit' class="btn btn-warning" name='submit'>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+        <div class="card ml-4 shadow mb-5 bg-white rounded" style="width: 16rem;">
+            <%= image_tag "house.jpg", :class => "card-img-top" %>
+            <div class="card-body">
+                <h2 class='card-title'>House</h2>
+                <p class='card-text'>(earns 2 - 5 golds)</p>
+                <form action='/house' method='post'>
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <button type='submit' class="btn btn-warning" name='submit'>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+        <div class="card ml-4 shadow mb-5 bg-white rounded" style="width: 16rem;">
+            <%= image_tag "casino.jpg", :class => "card-img-top" %>
+            <div class="card-body">
+                <h2 class='card-title'>Casino</h2>
+                <p class='card-text'>(earns/takes 0 - 50 golds)</p>
+                <form action='/casino' method='post'>
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <button type='submit' class="btn btn-warning" name='submit'>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class='row ml-2'>
+            <h2>Activities:</h2>
+    </div>
+    <div class='row mr-0'>
+        <div class='col-12'>
+            <textarea class='form-control' rows='4' name='activities' disabled>
+                <% session[:activities].reverse.each do |activity| %>
+                    <p style="color: <%= activity['color'] %>"><%= activity['msg'] %></p>
+                <% end %>
+            </textarea>
+        </div>
+    </div>
+</div>
