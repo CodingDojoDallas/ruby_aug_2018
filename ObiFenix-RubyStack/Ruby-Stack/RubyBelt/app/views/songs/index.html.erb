@@ -3,7 +3,7 @@
     <% if current_user %>
     <a href="/songs"><img src="/assets/codingdojo.png"</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/users/<%= current_user.id %>" class="grey-text">Welcome <span class="text-primary"><%= current_user.first_name %></span></a></li>
+      <li><a href="/users/<%= current_user.id %>" class="grey-text">Welcome <span class="light-blue-text"><%= current_user.first_name %></span></a></li>
       <li>
         <%= link_to "Log out", "/logout", data: { method: :delete, confirm: "Are you sure?"} %>
       </li>
@@ -53,14 +53,10 @@
                       <td><a href="<%= song_url(song) %>"><%= song.title %></a></td>
                       <td><%= song.users.count %></td>
                       <td class="">
-                          <a class="btn-small sn show" href="/songs">Add</a>
-                          <% if Playlist.find {|song| song.user_id == song.id } %>
-                          <form action="/songs/<%= song.id %>" method="post">
-                              <input type="hidden" name="_method" value="delete" />
+                          <form action="/playlist/<%= song.id %>" method="post">
                               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-                              <input type="submit" value="Rmove" from playlist"" class="btn-small sn delete">
+                              <input type="submit" value="Add" from playlist"" class="btn-small sn show">
                           </form>
-                          <% end %>
                       </td>
                   </tr>
                   <% end %>

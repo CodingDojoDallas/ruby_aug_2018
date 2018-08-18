@@ -76,9 +76,8 @@ class UsersController < ApplicationController
   # GET Request - Renders [.html]
   # =============================
   def show
-    @allsongs = Song.all
     @user = User.find(params[:id])
-    @playlist = @user.playlists.uniq
+    @playlist = @user.playlists
     @this_user = "#{@user.first_name} #{@user.last_name}"
   end
 

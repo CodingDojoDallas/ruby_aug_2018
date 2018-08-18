@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: RubyBelt_production
-  username: RubyBelt
+  username: obifenix
   password: <%= ENV['RUBYBELT_DATABASE_PASSWORD'] %>
