@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DojoSecrets</title>
+
+    <!-- Required CSS Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Montserrat|Open+Sans|Poiret+One">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'main.js', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="">
+    <nav class="dark" style="position:fixed; z-index:1000;">
+      <div class="nav-wrapper">
+        <% if current_user %>
+        <a href="/users/<%= current_user.id %>"><img src="/assets/codingdojo.png"</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/users/<%= current_user.id %>">Home</a></li>
+          <li><a href="/users/new">Welcome <%= current_user.name %></a></li>
+          <li>
+            <%= link_to "Log out", "/logout", data: { method: :delete, confirm: "Are you sure?"} %>
+
+            <!-- <form action="/sessions/<%=current_user.id%>/logout" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Log Out">
+            </form> -->
+          </li>
+        </ul>
+        <% else %>
+        <a href="/"><img src="/assets/codingdojo.png"</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <% if session["form"] == "login"%>
+          <li><a href="/users/new">Register</a></li><% else %>
+          <li><a href="/">Login</a></li><% end %>
+        </ul>
+        <% end %>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+    <!-- Required JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  </body>
+</html>

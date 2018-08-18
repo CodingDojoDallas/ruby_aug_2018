@@ -1,0 +1,60 @@
+<nav class="dark" style="position:fixed; z-index:1000;">
+  <div class="nav-wrapper">
+    <% if current_user %>
+    <a href="/songs"><img src="/assets/codingdojo.png"</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/songs">Dashboard</a></li>
+      <li>
+        <%= link_to "Log out", "/logout", data: { method: :delete, confirm: "Are you sure?"} %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</nav>
+
+<!--======================================================== [ Error Display... if any ] -->
+<% if flash[:errors] %>
+<div id="error_explanation" class="container" style="margin-bottom:0;">
+    <h5>
+        <span class="blue-text"><%= pluralize(flash[:errors].count, "error") %></span>
+        prohibited this user from being saved:
+    </h5>
+    <ul>
+        <% flash[:errors].each do |message| %>
+        <li class="red-text"><span class="blue-text right-margin1">&#187;</span><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+<!-- ============================================================= -->
+
+<div class="container">
+  <div class="col s12 col-sm-12">
+    <h2>Others Who Added
+      <span class="grey-text"><%= @this_song.artist %></span> -
+      <span class="white-text"><%= @this_song.title %></span>
+    </h2>
+
+    <table class="highlight">
+      <thead class="thdark">
+      <tr>
+          <th class="white-text">Name       </th>
+          <th class="white-text">Times Added</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @playlist.each do |song| %>
+        <tr class="trbody">
+            <td>
+              <a href="<%= user_url(User.find(song.user_id)) %>">
+                <%= User.find(song.user_id).first_name %>
+                <%= User.find(song.user_id).last_name %>
+              </a>
+            </td>
+            <td><%= Playlist.where(user_id: song.user_id).where(song_id: song.song_id).count%></td>
+        </tr>
+        <% end %>
+      </div>
+    </tbody>
+  </table>
+</div>

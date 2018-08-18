@@ -1,0 +1,105 @@
+<nav class="dark" style="position:fixed; z-index:1000;">
+  <div class="nav-wrapper">
+    <% if current_user %>
+    <a href="/songs"><img src="/assets/codingdojo.png"</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/users/<%= current_user.id %>" class="grey-text">Welcome <span class="text-primary"><%= current_user.first_name %></span></a></li>
+      <li>
+        <%= link_to "Log out", "/logout", data: { method: :delete, confirm: "Are you sure?"} %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</nav>
+
+<!--======================================================== [ Error Display... if any ] -->
+<% if flash[:errors] %>
+<div id="error_explanation" class="container" style="margin-bottom:0;">
+    <h5>
+        <span class="blue-text"><%= pluralize(flash[:errors].count, "error") %></span>
+        prohibited this user from being saved:
+    </h5>
+    <ul>
+        <% flash[:errors].each do |message| %>
+        <li class="red-text"><span class="blue-text right-margin1">&#187;</span><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+<!-- ============================================================= -->
+
+<div class="container">
+    <div style="margin:3rem">
+      <% if notice %>
+      <p id="notice"><%= notice %></p>
+      <% end %>
+    </div>
+    <h3 class="_header"> <span class="white-text">All the songs in our</span> hub. </h3>
+    <div class="scrolling-wrapper">
+      <table class="highlight">
+          <thead>
+          <tr>
+              <th class="theader">Artist </th>
+              <th class="theader">Title  </th>
+              <th class="theader">No. of Time This Song Has Been Added</th>
+              <th class="theader">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+              <div>
+                  <% @allsongs.each do |song| %>
+                  <tr class="trbody">
+                      <td><%= song.artist %></td>
+                      <td><a href="<%= song_url(song) %>"><%= song.title %></a></td>
+                      <td><%= song.users.count %></td>
+                      <td class="">
+                          <a class="btn-small sn show" href="/songs">Add</a>
+                          <% if Playlist.find {|song| song.user_id == song.id } %>
+                          <form action="/songs/<%= song.id %>" method="post">
+                              <input type="hidden" name="_method" value="delete" />
+                              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+                              <input type="submit" value="Rmove" from playlist"" class="btn-small sn delete">
+                          </form>
+                          <% end %>
+                      </td>
+                  </tr>
+                  <% end %>
+              </div>
+          </tbody>
+      </table>
+    </div>
+</div>
+
+<div class="container-min">
+
+    <div class="col s6">
+    <!--
+    Redirect to Create New Dojo Page
+    -->
+    <h2 style="margin-top:1.2rem;">ADD <span class="white-text">SONG</span></h2>
+
+    <div class="row">
+      <form class="col s12" action="/songs" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+          <div class="row">
+              <div class="input-field col s10 col-sm-12">
+                  <input placeholder="" id="title" name="song[title]" type="text" class="validate white-text" value="Thriller" style="font-size:16px;">
+                  <label for="name">Title</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s10 col-sm-12">
+                  <input placeholder="" id="artist" name="song[artist]" type="text" class="validate white-text" value="Michael Jackson" style="font-size:16px;">
+                  <label for="name">Artist</label>
+              </div>
+          </div>
+
+          <button class="btn waves-effect sn" type="submit" name="action">Add Song
+              <i class="material-icons right blue-text">send</i>
+          </button>
+      </form>
+
+      </div>
+    </div>
+</div>

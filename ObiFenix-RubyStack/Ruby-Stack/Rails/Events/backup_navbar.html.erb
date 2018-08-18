@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events</title>
+
+    <!-- Required CSS Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Montserrat|Open+Sans|Poiret+One">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'main.js', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="">
+    <nav class="dark" style="position:fixed; z-index:1000;">
+      <div class="nav-wrapper">
+        <% if current_user %>
+          <a href="/events"><img src="/assets/codingdojo.png"</a>
+          <% if session["page"] == "main" %>
+            <li><a href="/users/new">Welcome <%= current_user.first_name %></a></li>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/users/<%= current_user.id %>">Edit My Profile</a></li>
+                <li>
+                  <!-- <%= link_to "Log out", "/sessions", data: { method: :delete, confirm: "Are you sure?"} %> -->
+
+                  <form action="/sessions/<%=current_user.id%>" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" value="Log Out">
+                  </form>
+                </li>
+            </ul>
+          <% else %>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/users/<%= current_user.id %>">Events Dashboard</a></li>
+                <li>
+                  <!-- <%= link_to "Log out", "/sessions", data: { method: :delete, confirm: "Are you sure?"} %> -->
+
+                  <form action="/sessions/<%=current_user.id%>" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" value="Log Out">
+                  </form>
+                </li>
+              <% end %>
+            </ul>
+        <% else %>
+          <a href="/"><img src="/assets/codingdojo.png"</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <% if session["form"] == "login"%>
+            <li><a href="/sessions/switch">Register</a></li><% else %>
+            <li><a href="/sessions/switch">Login</a></li><% end %>
+          </ul>
+        <% end %>
+      </div>
+    </nav>
+
+    <!--======================================================== [ Error Display... if any ]
+    -->
+    <% if flash[:errors] %>
+    <div id="error_explanation" class="container" style="margin-bottom:0;">
+        <h5>
+            <span class="blue-text"><%= pluralize(flash[:errors].count, "error") %></span>
+            prohibited this user from being saved:
+        </h5>
+        <ul>
+            <% flash[:errors].each do |message| %>
+            <li class="red-text"><span class="blue-text right-margin1">&#187;</span><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+    <!--
+    =============================================================
+    -->
+
+
+    <%= yield %>
+
+    <!-- Required JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  </body>
+</html>

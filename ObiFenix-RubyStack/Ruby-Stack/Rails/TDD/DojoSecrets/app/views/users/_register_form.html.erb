@@ -1,0 +1,60 @@
+<h2>R<span class="white-text">EGISTRATION</span></h2>
+
+<div class="row">
+  <form class="col s12 mt-4" action="/users" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      <!--======================================================== [ Error Display... if any ]
+      -->
+      <% if @user.errors.any? %>
+      <div id="error_explanation">
+          <h5>
+              <span class="blue-text"><%= pluralize(@user.errors.count, "error") %></span>
+              prohibited this user from being saved:
+          </h5>
+          <ul>
+              <% @user.errors.full_messages.each do |message| %>
+              <li class="red-text"><span class="blue-text right-margin1">&#187;</span><%= message %></li>
+              <% end %>
+          </ul>
+      </div>
+      <% end %>
+      <!--
+      =============================================================
+      -->
+
+      <div class="row">
+          <div class="input-field col s10 col-sm-10">
+              <input placeholder="" id="name" name="user[name]" type="text" class="validate white-text">
+              <label for="name">Name</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s10 col-sm-10">
+              <input placeholder="" id="email" name="user[email]" type="text" class="validate white-text">
+              <label for="name" class="primary-text">Email</label>
+          </div>
+      </div>
+      <div class="row">
+
+          <div class="input-field col s5 col-sm-5" style="margin-left:8.7rem;">
+              <input placeholder="" id="password" name="user[password]" type="password" class="validate white-text">
+              <label for="password">Password</label>
+          </div>
+          <div class="input-field col s5 col-sm-5">
+              <input placeholder="" id="name" name="user[conf_password]" type="password" class="validate white-text">
+              <label for="name">Password Confirmation</label>
+          </div>
+        </div>
+
+      <button class="btn waves-effect sn" type="submit" name="action">REGISTER
+          <i class="material-icons right blue-text">send</i>
+      </button>
+  </form>
+
+  <div class="col s12 col-sm-12">
+    <p style="margin-bottom: -1rem; margin-top: 2rem">
+      Already have an account?
+      <a href="/" style="margin: .5rem">Login now!</a>
+    </p>
+  </div>
+</div>

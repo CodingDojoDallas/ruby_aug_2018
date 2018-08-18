@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DojoSecrets</title>
+
+    <!-- Required CSS Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Montserrat|Open+Sans|Poiret+One">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'main.js', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="container-fluid">
+    <nav class="dark" style="position:fixed;">
+      <div class="nav-wrapper">
+        <a href="/"><img src="/assets/codingdojo.png"</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <% if current_user %>
+          <li><a href="/users/new">Welcome <%= current_user.name %></a></li>
+          <li>
+            <form action="/sessions/<%=current_user.id%>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Log Out">
+            </form>
+          </li>
+          <% else %><% if session["page"] == "login"%>
+          <li><a href="/users/">Register</a></li><% else %>
+          <li><a href="/register">Login</a></li><% end %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+    <!-- Required JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  </body>
+</html>

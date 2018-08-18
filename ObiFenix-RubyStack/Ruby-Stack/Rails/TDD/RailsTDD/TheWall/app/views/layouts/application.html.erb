@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TheWall</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+  <% if session["user_id"]%>
+<nav class="navbar flexed" style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
+    <a href="/" class="navbar-brand" href="#"><h3>CodingDojo Wall</h3></a>
+    <div class="collapse navbar-collapse" id="navbarText"  style="display:flex; justify-content:space-between;">
+      <h5><span class="text-muted">Welcome</span> <%=session["username"]%></h5>
+      <h5><%= link_to "Log out", "/logout", data: { method: :delete, confirm: "Are you sure?"} %></h5>
+    </div>
+  </nav>
+  <% end %>
+
+  <%= yield %>
+<div>
+
+  </body>
+</html>

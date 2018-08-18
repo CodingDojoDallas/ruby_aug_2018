@@ -1,0 +1,35 @@
+<h2>L<span class="white-text">OGIN</span></h2>
+
+<div class="row" style="padding-right:4rem;">
+  <form class="col s12 mt-4" action="/sessions" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      <!--======================================================== [ Error Display... if any ]
+      -->
+
+      <!--
+      =============================================================
+      -->
+      <div class="row">
+          <div class="input-field col s12 col-sm-10">
+              <input placeholder="" id="email" name="user[email]" type="text" class="validate white-text">
+              <label for="name" class="primary-text">Email</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12 col-sm-10">
+              <input placeholder="" id="password" name="user[password]" type="password" class="validate white-text">
+              <label for="password">Password</label>
+          </div>
+      </div>
+      <button class="btn waves-effect sn" type="submit" name="action">LOGIN
+          <i class="material-icons right blue-text">send</i>
+      </button>
+  </form>
+
+  <div class="col s12 col-sm-12">
+    <p style="margin-bottom: -1rem; margin-top: 2rem">
+      Don't have an account yet?
+      <a href="/users/new" style="margin: .5rem">Create one now!</a>
+    </p>
+  </div>
+</div>

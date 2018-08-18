@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="col s12 col-sm-12">
+    <div class="col s6 col-sm-6">
+      <h2><%= @this_event.name %></h2>
+      <ul>
+        <li><h6 class="grey-text">Host: <span class="white-text"><%= @host %></span></h6></li>
+        <li><h6 class="grey-text">Date: <span class="white-text"><%= @this_event.date %></span></h6></li>
+        <li><h6 class="grey-text">Location: <span class="white-text"><%= @this_event.city %>, <%= @this_event.state%></span></h6></li>
+        <li><h6 class="grey-text">People who have joined the event: <span class="white-text"><%= @attends_count %></span></h6></li>
+      </ul>
+
+      <div class="row">
+        <table class="highlight">
+            <thead>
+            <tr>
+                <th class="theader">Name    </th>
+                <th class="theader">Location</th>
+                <th class="theader">State   </th>
+            </tr>
+            </thead>
+            <tbody>
+                <div>
+                    <% @attendees.each do |attendee| %>
+                    <tr class="trbody">
+                        <td>
+                            <%= attendee.user.first_name %>
+                            <%= attendee.user.last_name %>
+                        </td>
+                        <td><%= attendee.user.city %> </td>
+                        <td><%= attendee.user.state %></td>
+                    </tr>
+                    <% end %>
+                </div>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col s6 col-sm-6">
+      <div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+          <span class="card-title">Card Title</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="col s6 col-sm-6">
+        <h6> Add comment: </h6>
+        <form action="<%= comments_path(@this_event.id) %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+          <textarea name="comment[content]" rows="6"></textarea>
+          <button type="submit" class="btn sn"> Submit Comments </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

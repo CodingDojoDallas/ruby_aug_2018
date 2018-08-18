@@ -1,0 +1,15 @@
+<div class="container">
+  <form action="/animes" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+    <h1 class="mt-5">New Anime</h1>
+
+    <div class="form-row mt-2">
+      <div class="form-group col-md-4">
+        <label for="inputEmail4" class="text-primary">Title</label>
+        <input type="text" name="anime[title]" class="form-control" id="title" placeholder="Enter Title">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Anime</button>
+  </form>
+</div>
