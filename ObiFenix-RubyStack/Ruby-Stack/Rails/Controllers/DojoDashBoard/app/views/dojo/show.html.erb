@@ -1,0 +1,39 @@
+<div class="container">
+
+    <% if notice %>
+    <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <h2><span class="white-text"><%= @dojo.branch %></span> Information</h2>
+
+    <table class="highlight">
+        <thead>
+        <tr>
+            <th class="theader">Street            </th>
+            <th class="theader">City              </th>
+            <th class="theader">State             </th>
+        </tr>
+        </thead>
+        <tbody>
+            <div>
+                <tr class="trbody">
+                    <td><%= @dojo.street %></td>
+                    <td><%= @dojo.city   %></td>
+                    <td><%= @dojo.state  %></td>
+                </tr>
+            </div>
+        </tbody>
+    </table>
+
+    <!--
+    Actions
+    -->
+    <form action="/dojos/<%= @dojo.id %>" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <div class="grided">
+            <a href="/dojos/<%= @dojo.id %>/edit" class="btn btn-small sn blue-text">Edit</a>
+            <button type="submit" class="btn btn-small sn red-text">Delete</button>
+        </div>
+    </form>
+</div>

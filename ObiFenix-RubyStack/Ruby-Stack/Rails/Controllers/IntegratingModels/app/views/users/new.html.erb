@@ -1,0 +1,19 @@
+<!-- ADD USER PAGE COMPONENT -->
+<div class="container">
+    <h2 class="teal-text" style="margin: 2rem 0">NEW USER</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <form class="col s12 mt-4" action="/users" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="" id="name" name="user[name]" type="text" class="validate white-text">
+                    <label for="name">Full Name</label>
+                </div>
+            </div>
+            <button class="btn btn-small btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

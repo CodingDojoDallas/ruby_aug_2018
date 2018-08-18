@@ -1,0 +1,10 @@
+<div class="container mt-5">
+  <h1>Animes</h1>
+  <div class="row">
+    <div class="col s6">
+      <% if @animes %><% @animes.each do |anime| %>
+        <p>@ <span class="text-primary"><%= anime.title %></span></p>
+      <% end %><% end %>
+    </div>
+  </div>
+</div>

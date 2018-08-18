@@ -1,0 +1,53 @@
+// Navbar section
+nav {
+    background-color:#000;
+    padding: 0 4rem;
+    a:hover { color: tan;  }
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    // position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-image: url('images/wooden.jpg')
+    background-image: url('https://assets.codingdojo.com/new_images/home/main.jpg')
+}
+
+// Container section
+.container { height: 43%; width: 50%; background-color: #171414e3; color: #f5f5f5; padding: 1rem 2rem; }
+
+// Form Components [ Add and Edit ] Section
+form { padding: 0 15rem; }
+ul .form-row { padding-left: 4rem !important; }
+.form-row { line-height: 0rem; }
+
+.flxend { display: flex; justify-content: end; }                                // div container requiring flex
+.flexed { display: flex; justify-content: space-between; }                      // div container requiring flex
+.grided { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 2rem; }      // div container requiring grid
+.inline { display: inline-block; margin: 1rem auto; }                           // div container requiring grid
+.grided input { min-width: 100%; margin-top: 2rem; }
+.btn    { background-color: teal }
+.btn:hover { background-color: #f5f5f5 !important; color: teal; }
+.text-warning { color: #fba153fa; }
+.sn:hover { background-color: #222 !important; }
+
+.brand-logo {
+    font-family: 'Days One', sans-serif;
+}
+
+.heading {
+    padding: 1rem 4rem;
+    margin: 0 auto;
+    border-radius: .3rem;
+}
+.timer, h5 {
+    border: 2px solid cornflowerblue;
+    text-align: center;
+    border-radius: .3rem;
+    line-height: 4rem;
+}
+.time { color: #c1c7dd; }
+.date { color: #f5f5f5; }

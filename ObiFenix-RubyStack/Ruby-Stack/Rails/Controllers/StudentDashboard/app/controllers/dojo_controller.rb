@@ -1,0 +1,110 @@
+class DojoController < ApplicationController
+
+  before_action :set_dojo, only: [:show, :edit, :update, :destroy]
+
+  # ============================================
+  # GET Request - Renders root/home page [.html]
+  # ============================================
+  def index
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
+    @alldojos = Dojo.all
+  end
+
+
+  # =============================
+  # GET Request - Renders [.html]
+  # =============================
+  def new
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
+    @dojo = Dojo.new
+  end
+
+
+  # ====================
+  # POST Request [.html]
+  # POST Request [.json]
+  # ====================
+  def create
+    @dojo = Dojo.create(validate_params)
+    # @dojo.valid?
+    respond_to do |format|
+      if @dojo.save
+        format.html { redirect_to '/', notice: 'Dojo was successfully created.' }
+        format.json { render :show, status: :created, location: @dojo }
+      else
+        format.html { render :new }
+        format.json { render json: @dojo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  # =============================
+  # GET Request - Renders [.html]
+  # =============================
+  def show
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
+    @dojo = Dojo.find(params[:id])
+    @students = @dojo.students.order(:last_name)
+  end
+
+
+  # =============================
+  # GET Request - Renders [.html]
+  # =============================
+  def edit
+    # --- [ Put in Session ]
+    session[:page] = "dojo"
+    # ---------------------
+    @dojo = Dojo.find(params[:id])
+    render "edit"
+  end
+
+
+  # =========================
+  # PATCH/PUT Request [.html]
+  # PATCH/PUT Request [.json]
+  # =========================
+  def update
+    respond_to do |format|
+      if @dojo.update(validate_params)
+        format.html { redirect_to '/', notice: 'Dojo was successfully updated.' }
+        format.json { render :show, status: :ok, location: @dojo }
+      else
+        format.html { render :edit }
+        format.json { render json: @dojo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  # ====================
+  # DELETE /dojos/1
+  # DELETE /dojos/1.json
+  # ====================
+  def destroy
+    Dojo.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to '/', notice: 'Dojo was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_dojo
+      @dojo = Dojo.find(params[:id])
+    end
+
+    # Sanatizing/Validating Parameters...
+    def validate_params
+      params.require(:dojo).permit(:branch, :street, :city, :state)
+    end
+end

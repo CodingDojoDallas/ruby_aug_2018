@@ -1,0 +1,47 @@
+<nav class="dark" style="position:fixed; z-index:1000;">
+  <div class="nav-wrapper">
+    <% if current_user %>
+    <a href="/songs"><img src="/assets/codingdojo.png"</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/songs/<%= current_user.id %>"><span class="light-blue-text"><%= current_user.first_name %></span></a></li>
+      <li><a href="/songs">Dashboard</a></li>
+      <li>
+        <%= link_to "Log out", "/logout", data: { method: :delete, confirm: "Are you sure?"} %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</nav>
+
+<div class="container">
+    <div style="margin:3rem">
+      <% if notice %>
+      <p id="notice"><%= notice %></p>
+      <% end %>
+    </div>
+
+    <h2><span class="white-text"><%= @this_user %>'s</span> Playlist</h2>
+
+    <div class="scrolling-wrapper">
+      <table class="highlight">
+          <thead>
+          <tr>
+            <th class="theader">Artist     </th>
+            <th class="theader">Title      </th>
+            <th class="theader">Times Added</th>
+          </tr>
+          </thead>
+          <tbody>
+              <div>
+                  <% @playlist.each do |song| %>
+                  <tr class="trbody">
+                      <td><%= Song.find(song.song_id).artist %></td>
+                      <td><%= Song.find(song.song_id).title %></td>
+                      <td><%= Playlist.where(user_id: song.user_id).where(song_id: song.song_id).count%></td>
+                  </tr>
+                  <% end %>
+              </div>
+          </tbody>
+      </table>
+    </div>
+</div>

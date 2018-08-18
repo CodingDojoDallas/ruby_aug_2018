@@ -1,0 +1,56 @@
+<div class="container">
+
+    <% if notice %>
+    <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <h2><%= @dojo.branch %></h2>
+    <ul class="col s12">
+        <li class="col s6"><h6>Address: <b class="grey-text"><%= @dojo.street %></b></li></h6>
+        <li class="col s6">
+            <h6>City: <b class="grey-text"><%= @dojo.city   %></b></h6>
+            <h6>State: <b class="grey-text"><%= @dojo.state  %></b></h6>
+        </li>
+    </ul>
+
+    <table class="highlight">
+        <thead>
+        <tr>
+            <th class="theader">First Name</th>
+            <th class="theader">Last Name </th>
+            <th class="theader">Email     </th>
+            <th class="theader">Actions   </th>
+        </tr>
+        </thead>
+        <tbody>
+            <div>
+                <% @students.each do |student| %>
+                <tr class="trbody">
+                    <td><%= student.first_name %></td>
+                    <td><%= student.last_name  %></td>
+                    <td><%= student.email      %></td>
+                    <td class="">
+                        <a class="btn-small sn show" href="/dojo/<%= @dojo.id %>/students/<%= student.id %>"> Show</a>
+                        <a class="btn-small sn edit" href="/dojo/<%= @dojo.id %>/students/<%= student.id %>/edit" %>Edit</a>
+                        <form action="/dojo/<%= @dojo.id %>/students/<%= student.id %>" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+                            <input type="submit" value="Delete" class="btn-small sn delete">
+                        </form>
+                    </td>
+                </tr>
+                <% end %>
+            </div>
+        </tbody>
+    </table>
+</div>
+
+<div class="row center-align">
+    <div class="col s6">
+    <!--
+    Redirect to Create New Student Page
+    -->
+    <button class="btn sn top-margin1 left-margin2"><%= link_to 'New Student', new_dojo_student_url(@dojo) %></button>
+    <!--<a class="btn sn top-margin1" href="/dojo/<%= @dojo.id %>/students/new" %>New Student</a>-->
+    </div>
+</div>

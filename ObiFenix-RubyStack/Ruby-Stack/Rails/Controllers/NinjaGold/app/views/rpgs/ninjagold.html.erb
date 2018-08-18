@@ -1,0 +1,76 @@
+<!-- Main Container -->
+<div class="container">
+    <hr>
+    <h1 class="text-center justify-content-center brand-logo">Ninja <span>Gold</span></h1>
+    <hr>
+    <div class="row">
+        <img src="/assets/gold.gif" class="score-img" alt="gold">
+        <h3><b style="margin: 3rem .5rem -3rem 1rem;"> x </b> <%= session[:gold_count] =%></h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 border border-warning">
+            <form action="/process" method="POST">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <h4>Farm</h4>
+                <img src="assets/farm.gif" class="" alt="gold">
+                <p>(Earn 10-20 gold)</p>
+                <button type="submit" name="gold" class="btn btn-outline-warning" value="farm">Find Gold!</button>
+            </form>
+            <hr>
+        </div>
+        <div class="col-md-3 col-sm-6 border border-warning">
+            <form action="/process" method="POST">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <h4>Cave</h4>
+                <img src="assets/cave.gif" class="" alt="gold">
+                <p>(Earn 5-10 gold)</p>
+                <button type="submit" name="gold" class="btn btn-outline-warning" value="cave">Find Gold!</button>
+            </form>
+            <hr>
+        </div>
+        <div class="col-md-3 col-sm-6 border border-warning">
+            <form action="/process" method="POST">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <h4>House</h4>
+                <img src="assets/house.gif" class="" alt="gold">
+                <p>(Earn 2-5 gold)</p>
+                <button type="submit" name="gold" class="btn btn-outline-warning" value="house">Find Gold!</button>
+            </form>
+            <hr>
+        </div>
+        <div class="col-md-3 col-sm-6 border border-warning">
+            <form action="/process" method="POST">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <h4>Casino</h4>
+                <img src="assets/casino.gif" class="" alt="gold">
+                <p>(Earn/takes 0-50 gold)</p>
+                <button type="submit" name="gold" class="btn btn-outline-warning" value="casino">Find Gold!</button>
+            </form>
+            <hr>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <hr style="background-color:gray;">
+        <h4 class="activities"><strong>Game Activities</strong></h4>
+
+        <form action="/reset" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="submit" value="CLEAR" class="btn mybtn btn-outline-danger">
+        </form>
+
+        <hr style="background-color:gray;">
+        <div class=" col-md-8">
+            <ul class="nav nav-pills nav-stacked anyClass">
+                <% session[:activities].reverse_each do |activity| %>
+                <% if activity["status"] == "green" %>
+                <li class="nav-item" style='color:green'><%=activity["message"]%><span class='timer'><%=activity["timer"]%></span></li>
+                <% else %>
+                <li class='nav-item' style='color:red'><%=activity["message"]%><span class='timer'><%=activity["timer"]%></span></li>
+                <% end %><% end %>
+            </ul>
+        </div>
+    </div>
+</div>

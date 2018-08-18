@@ -1,0 +1,50 @@
+<div class="container">
+
+    <% if notice %>
+    <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <h2>Listing <span class="white-text"><%= @alldojos.count %></span> Dojos</h2>
+
+    <table class="highlight">
+        <thead>
+        <tr>
+            <th class="theader">Coding Dojo Branch</th>
+            <th class="theader">Street            </th>
+            <th class="theader">City              </th>
+            <th class="theader">State             </th>
+            <th class="theader">Actions           </th>
+        </tr>
+        </thead>
+        <tbody>
+            <div>
+                <% @alldojos.each do |dojo| %>
+                <tr class="trbody">
+                    <td><%= dojo.branch %></td>
+                    <td><%= dojo.street %></td>
+                    <td><%= dojo.city   %></td>
+                    <td><%= dojo.state  %></td>
+                    <td class="">
+                        <a class="btn-small sn show" href="/dojo/<%= dojo.id %>"> Show</a>
+                        <a class="btn-small sn edit" href="/dojo/<%= dojo.id %>/edit" %>Edit</a>
+                        <form action="/dojo/<%= dojo.id %>" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+                            <input type="submit" value="Delete" class="btn-small sn delete">
+                        </form>
+                    </td>
+                </tr>
+                <% end %>
+            </div>
+        </tbody>
+    </table>
+</div>
+
+<div class="row center-align">
+    <div class="col s6">
+    <!--
+    Redirect to Create New Dojo Page
+    -->
+    <button class="btn sn top-margin1"><%= link_to 'New Dojo', new_dojo_url %></button>
+    </div>
+</div>

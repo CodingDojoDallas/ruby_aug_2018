@@ -1,0 +1,81 @@
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="cold-sm-6">
+          <h5><%= flash["success"] %></h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ">
+          <form class="form-horizontal">
+            <fieldset>
+
+              <!-- Form Name -->
+              <legend><h1>User Submmitted Info</h1></legend>
+
+              <!-- Text input-->
+              <div class="form-group-s">
+                <label class="col-md-6 control-label" for="Name: ">Name: </label>
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                     <p>
+                        <i class="fa fa-user"></i>
+                        <%= session["survey_form"]["name"] %>
+                     </p>
+                    </div>
+                  </div>
+                </div>
+               </div>
+
+              <!-- Text input-->
+              <div class="form-group-s">
+                <label class="col-md-6 control-label" for="Dojo Location: ">Dojo Location: </label>
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <p>
+                        <i class="fa fa-birthday-cake"></i>
+                        <%= session["survey_form"]["location"] %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group-s">
+                <label class="col-md-6 control-label" for="Favorite Language: ">Favorite Language: </label>
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                       <p>
+                         <i class="fa fa-birthday-cake"></i>
+                         <%= session["survey_form"]["language"] %>
+                       </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group-s">
+                <label class="col-md-6 control-label" for="comment: ">Comment: </label>
+
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <p><%= session["survey_form"]["comment"]  %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>

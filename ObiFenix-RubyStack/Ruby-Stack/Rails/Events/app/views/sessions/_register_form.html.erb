@@ -1,0 +1,108 @@
+<h2>R<span class="white-text">EGISTRATION</span></h2>
+
+<div class="row">
+  <form class="col s12 mt-4" action="/users" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+      <div class="row">
+          <div class="input-field col s5 col-sm-5" style="margin-left:8.5rem;">
+              <input placeholder="" id="first_name" name="user[first_name]" type="text" class="validate white-text" value="Somthing">
+              <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s5 col-sm-5">
+              <input placeholder="" id="last_name" name="user[last_name]" type="text" class="validate white-text" value="Somthing">
+              <label for="last_name">Last last_Name</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s10 col-sm-10">
+              <input placeholder="" id="email" name="user[email]" type="text" class="validate white-text" value="somthing@gmail.com">
+              <label for="email" class="primary-text">Email</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s5 col-sm-5" style="margin-left:8.5rem;">
+              <input placeholder="" id="city" name="user[city]" type="text" class="validate white-text" value="somthing">
+              <label for="city">Location</label>
+          </div>
+          <div class="input-field col s5 col-sm-5">
+              <!-- <input placeholder="" id="state" name="user[state]" type="text" class="validate white-text" value="TX"> -->
+              <select class="custom-select" id="state" name="user[state]">
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AR">AR</option>
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+              </select>
+              <label for="state">State</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s5 col-sm-5" style="margin-left:8.5rem;">
+              <input placeholder="" id="password" name="user[password]" type="password" class="validate white-text" value="12345678">
+              <label for="password">Password</label>
+          </div>
+          <div class="input-field col s5 col-sm-5">
+              <input placeholder="" id="password_confirmation" name="user[password_confirmation]" type="password" class="validate white-text" value="12345678">
+              <label for="name">Password Confirmation</label>
+          </div>
+        </div>
+
+      <button class="btn waves-effect sn" type="submit" name="action">REGISTER
+          <i class="material-icons right blue-text">send</i>
+      </button>
+  </form>
+
+  <div class="col s12 col-sm-12">
+    <p style="margin-bottom: -1rem; margin-top: 2rem">
+      Already have an account?
+      <a href="/sessions/sw" style="margin: .5rem">Login now!</a>
+    </p>
+  </div>
+</div>
